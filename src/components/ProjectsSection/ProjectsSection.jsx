@@ -221,14 +221,14 @@ export const ProjectsSection = () => {
                   {/* Location/Footer */}
                   <div className="mt-auto">
                     <div className="text-right">
-                      <div className="text-[#29ABE2] text-xl font-medium">
+                      <div className="text-[#29ABE2] text-sm md:text-xl font-medium">
                         {project.title }
 
                         {/* // .map((line, i) => (
                           // <div key={i}>{line}</div>
                         // ))} */}
                       </div>
-                      <div className="text-[#FFFFFF] text-sm font-normal">
+                      <div className="text-[#FFFFFF] me-4 md:me-8 text-sm font-normal">
                         {project.location}
                         
                         {/* .map((line, i) => (
@@ -286,7 +286,7 @@ export const ProjectsSection = () => {
                       </h3>
 
                       {/* Description */}
-                      <p className="text-gray-300 text-lg sm:text-xl mb-8 leading-relaxed">
+                      <p className="text-gray-300 text-sm md:text-xl  mb-8 leading-relaxed">
                         Let's collaborate to bring your vision to life with cutting-edge technology
                         and innovative design solutions.
                       </p>

@@ -54,7 +54,7 @@ export const NewsletterSubscription = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen p-4">
+    <div className="flex items-center justify-center min-h-[31.25rem] md:min-h-screen  p-4">
       <motion.div 
         className="relative w-full max-w-[602px]"
         initial="hidden"
