@@ -26,8 +26,10 @@ export default function contact(){
     <div>
         <Navbar/>
         {/* <PremiumVideoBanner BannerTitle={'Contact'}/> */}
+<div className="py-36">
 
       <ContactPage/>
+      </div>
       <Footer/>
 
     </div>
