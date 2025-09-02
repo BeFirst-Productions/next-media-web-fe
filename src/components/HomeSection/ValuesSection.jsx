@@ -71,7 +71,7 @@ const ValuesSection = () => {
         </div>
 
         {/* Bottom 2 cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 justify-center md:mt-12 relative z-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 justify-items-center  md:mt-12 relative z-20">
           {values.slice(3,5).map((value,index) => (
             <motion.div
               key={index}
