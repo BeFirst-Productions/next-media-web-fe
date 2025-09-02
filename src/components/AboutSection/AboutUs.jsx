@@ -16,7 +16,7 @@ const teamMembers = [
 
 export default function AboutUs() {
   return (
-    <section className="py-12 container-custom pt-32 md:pt-24 lg:pt-36">
+    <section className=" container-custom pt-15 ">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-extrabold sm:text-5xl md:pt-6 lg:pt-0">About Us</h2>
         </div>

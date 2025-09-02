@@ -67,7 +67,7 @@ export default function ServicesSection() {
     ];
 
     return (
-        <section className=" pt-32 md:pt-24 lg:pt-36 container-custom">
+        <section className=" pt-15  container-custom">
             <div className="w-full">
 
                 <div className="text-center mb-16">

@@ -29,8 +29,10 @@ export default function aboutus(){
         <Navbar/>
         {/* <PremiumVideoBanner BannerTitle={'About Us'}/> */}
 
-      <AboutUs/>
-      <Footer/>
+<div className="py-36">
+        <AboutUs />
+      </div>
+            <Footer/>
 
     </div>
   )
