@@ -97,9 +97,9 @@ const ImageTextSection = () => {
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             viewport={{ once: true }}
           >
-            <div className="space-y-6 lg:space-y-12 xl:space-y-96 flex  sm:justify-center lg:justify-end lg:pl-0 xl:pl-20">
+            <div className="space-y-6 lg:space-y-12 xl:space-y-96 flex  justify-center  lg:justify-end lg:pl-0 xl:pl-20">
               <h2 className="text-3xl md:text-6xl lg:text-4xl xl:text-7xl [@media(min-width:1440px)_and_(max-width:1535px)]:text-5xl font-bold text-white leading-tight text-center lg:text-left">
-                <span className="block">your strategic</span>
+                <span className="block ">your strategic</span>
                 <span className="block">partner in driving</span>
                 <span className="block"><HighlightWord>brand growth</HighlightWord> &</span>
                 <span className="block">market success.</span>
