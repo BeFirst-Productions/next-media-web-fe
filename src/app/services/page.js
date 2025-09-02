@@ -26,8 +26,10 @@ export default function Service(){
     <div>
         <Navbar/>
         {/* <PremiumVideoBanner BannerTitle={'Services'}/> */}
+<div className="py-36">
 
       <ServicesSection/>
+      </div>
       <Footer/>
 
     </div>

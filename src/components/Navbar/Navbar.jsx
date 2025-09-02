@@ -58,7 +58,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="fixed w-full h-24 container-custom z-40 bg-black">
+      <nav className="fixed w-full h-24  container-custom z-40 bg-black">
         <div className="h-full w-full  flex items-center justify-between">
           {/* Logo - forced to left */}
           <div className="flex-shrink-0   ">
@@ -130,194 +130,200 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* Overlay with opacity effect - Fixed z-index */}
+      {/* Enhanced Overlay with higher z-index to cover everything */}
       {(isSidebarOpen || isTransitioning) && (
         <div
-          className={`fixed inset-0 bg-black/40 transition-opacity duration-300 ${isTransitioning && isSidebarOpen ? 'bg-opacity-40 z-30' : 'bg-opacity-0 z-0'}`}
+          className={`fixed inset-0 bg-black/70 transition-opacity duration-300 z-50 ${isTransitioning && isSidebarOpen ? 'opacity-100' : 'opacity-0'}`}
           onClick={handleOverlayClick}
           aria-hidden="true"
         />
       )}
 
-      {/* Mobile Sidebar */}
+      {/* Mobile Sidebar with higher z-index */}
       <div
-        className={`fixed top-0 right-0 z-40 h-full bg-gray-900/80 backdrop-blur-sm lg:w-2/5 xl:w-1/5 md:w-1/2 w-full flex flex-col px-8 transform transition-all duration-500 ease-out overflow-auto  ${isSidebarOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
+        className={`fixed top-0 right-0 z-50 h-full bg-gray-900/95 backdrop-blur-md lg:w-2/5 xl:w-1/5 md:w-1/2 w-full flex flex-col transform transition-all duration-500 ease-out overflow-hidden ${isSidebarOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
           }`}
       >
-        {/* Close button */}
-        <div className="flex justify-end pt-6">
-          <button
-            onClick={toggleSidebar}
-            className="p-2  "
-            aria-label="Close menu"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-10 w-10 md:h-12 md:w-12 "
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+        <div className="flex flex-col h-full px-8 overflow-y-auto">
+          {/* Close button */}
+          <div className="flex justify-end pt-6">
+            <button
+              onClick={toggleSidebar}
+              className="p-2"
+              aria-label="Close menu"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M6 18L18 6M6 6l12 12"
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-10 w-10 md:h-12 md:w-12"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
+
+          <div className="w-full pt-10 flex-1 flex flex-col">
+            {/* Logo inside the menu */}
+            <div className="ml-3 mb-10">
+              <Image
+                src="/logos/logo1.png"
+                width={150}
+                height={50}
+                alt="Company Logo"
+                className="h-10 w-auto"
               />
-            </svg>
-          </button>
-        </div>
+            </div>
 
-        <div className="w-full  pt-10">
-          {/* Logo inside the menu */}
-          <div className=" ml-3 mb-10">
-            <Image
-              src="/logos/logo1.png"
-              width={150}
-              height={50}
-              alt="Company Logo"
-              className="h-10 w-auto"
-            />
-          </div>
+            {/* Menu items */}
+            <div className="mb-6 pl-4">
+              <ul className="flex flex-col space-y-6 text-xl">
+                {/* Mobile-only navigation items */}
+                <li className="md:hidden ">
+                  <Link
+                    href="/"
+                    className="block py-2 text-white hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-b hover:from-[#F53A7A] hover:to-[#190CD2] transition-all duration-300"
+                    onClick={toggleSidebar}
+                  >
+                    Home
+                  </Link>
+                </li>
+                <li className="md:hidden">
+                  <Link
+                    href="/aboutus"
+                    className="block py-2 text-white hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-b hover:from-[#F53A7A] hover:to-[#190CD2] transition-all duration-300"
+                    onClick={toggleSidebar}
+                  >
+                    About Us
+                  </Link>
+                </li>
+                <li className="md:hidden">
+                  <Link
+                    href="/services"
+                    className="block py-2 text-white hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-b hover:from-[#F53A7A] hover:to-[#190CD2] transition-all duration-300"
+                    onClick={toggleSidebar}
+                  >
+                    Services
+                  </Link>
+                </li>
+                <li className="md:hidden">
+                  <Link
+                    href="#"
+                    className="block py-2 text-white hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-b hover:from-[#F53A7A] hover:to-[#190CD2] transition-all duration-300"
+                    onClick={toggleSidebar}
+                  >
+                    Clients
+                  </Link>
+                </li>
+                <li className="md:hidden">
+                  <Link
+                    href="/projects"
+                    className="block py-2 text-white hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-b hover:from-[#F53A7A] hover:to-[#190CD2] transition-all duration-300"
+                    onClick={toggleSidebar}
+                  >
+                    Projects
+                  </Link>
+                </li>
+                <li className="md:hidden">
+                  <Link
+                    href="/contact"
+                    className="block py-2 text-white hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-b hover:from-[#F53A7A] hover:to-[#190CD2] transition-all duration-300"
+                    onClick={toggleSidebar}
+                  >
+                    Contact
+                  </Link>
+                </li>
+                {/* <li>
+                  <Link
+                    href="/values"
+                    className="block py-2 text-white hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-b hover:from-[#F53A7A] hover:to-[#190CD2] transition-all duration-300"
+                    onClick={toggleSidebar}
+                  >
+                    Our Values
+                  </Link>
+                </li> */}
+                <li>
+                  <Link
+                    href="/gallery"
+                    className="block py-2 text-white hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-b hover:from-[#F53A7A] hover:to-[#190CD2] transition-all duration-300"
+                    onClick={toggleSidebar}
+                  >
+                    Our Gallery
+                  </Link>
+                </li>
+              </ul>
+            </div>
 
-          {/* Menu items */}
-          <div className="mb-10 pl-4">
-            <ul className="flex flex-col  space-y-6 text-xl">
-              {/* Mobile-only navigation items */}
-              <li className="md:hidden ">
-                <Link
-                  href="/"
-                  className="block py-2 text-white hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-b hover:from-[#F53A7A] hover:to-[#190CD2] transition-all duration-300"
-                  onClick={toggleSidebar}
-                >
-                  Home
-                </Link>
-              </li>
-              <li className="md:hidden">
-                <Link
-                  href="/aboutus"
-                  className="block py-2 text-white hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-b hover:from-[#F53A7A] hover:to-[#190CD2] transition-all duration-300"
-                  onClick={toggleSidebar}
-                >
-                  About Us
-                </Link>
-              </li>
-              <li className="md:hidden">
-                <Link
-                  href="/services"
-                  className="block py-2 text-white hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-b hover:from-[#F53A7A] hover:to-[#190CD2] transition-all duration-300"
-                  onClick={toggleSidebar}
-                >
-                  Services
-                </Link>
-              </li>
-              <li className="md:hidden">
-                <Link
-                  href="#"
-                  className="block py-2 text-white hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-b hover:from-[#F53A7A] hover:to-[#190CD2] transition-all duration-300"
-                  onClick={toggleSidebar}
-                >
-                  Clients
-                </Link>
-              </li>
-              <li className="md:hidden">
-                <Link
-                  href="/projects"
-                  className="block py-2 text-white hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-b hover:from-[#F53A7A] hover:to-[#190CD2] transition-all duration-300"
-                  onClick={toggleSidebar}
-                >
-                  Projects
-                </Link>
-              </li>
-              <li className="md:hidden">
-                <Link
-                  href="/contact"
-                  className="block py-2 text-white hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-b hover:from-[#F53A7A] hover:to-[#190CD2] transition-all duration-300"
-                  onClick={toggleSidebar}
-                >
-                  Contact
-                </Link>
-              </li>
-              {/* <li>
-                <Link
-                  href="/values"
-                  className="block py-2 text-white hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-b hover:from-[#F53A7A] hover:to-[#190CD2] transition-all duration-300"
-                  onClick={toggleSidebar}
-                >
-                  Our Values
-                </Link>
-              </li> */}
-              <li>
-                <Link
-                  href="/gallery"
-                  className="block py-2 text-white hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-b hover:from-[#F53A7A] hover:to-[#190CD2] transition-all duration-300"
-                  onClick={toggleSidebar}
-                >
-                  Our Gallery
-                </Link>
-              </li>
-            </ul>
-          </div>
+            {/* Social Icons - Moved below Our Gallery */}
+            <div className="border-t border-gray-700 my-6 w-4/5 mx-auto"></div>
+            <div className="flex space-x-6 pl-4 p-6 md:p-4">
+              {/* Facebook */}
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-pink-500 transition-all duration-300">
+                <FaFacebookF className="w-6 h-6" />
+              </a>
 
-          <div className="border-t border-gray-700 my-6 w-4/5 mx-auto"></div>
-          <div className="flex space-x-6 pl-4 p-6 md:p-4">
-            {/* Facebook */}
-            <a href="#" className="text-white hover:text-pink-500 transition-all duration-300">
-              <FaFacebookF className="w-6 h-6" />
-            </a>
+              {/* Instagram */}
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-pink-500 transition-all duration-300">
+                <FaInstagram className="w-6 h-6" />
+              </a>
 
-            {/* Instagram */}
-            <a href="#" className="text-white hover:text-pink-500 transition-all duration-300">
-              <FaInstagram className="w-6 h-6" />
-            </a>
+              {/* YouTube */}
+              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-pink-500 transition-all duration-300">
+                <FaYoutube className="w-6 h-6" />
+              </a>
 
-            {/* YouTube */}
-            <a href="#" className="text-white hover:text-pink-500 transition-all duration-300">
-              <FaYoutube className="w-6 h-6" />
-            </a>
+              {/* LinkedIn */}
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-pink-500 transition-all duration-300">
+                <FaLinkedinIn className="w-6 h-6" />
+              </a>
+            </div>
+            
+            {/* Get in Touch - positioned at bottom on large screens */}
+            <div className="mt-auto pb-10">
+              <div className="border-t border-gray-700 my-6 w-4/5 mx-auto"></div>
+              <h3 className="text-white text-lg font-semibold mb-6 pl-4">Get in Touch</h3>
+              <div className="space-y-4 text-white text-sm pl-4">
 
-            {/* LinkedIn */}
-            <a href="#" className="text-white hover:text-pink-500 transition-all duration-300">
-              <FaLinkedinIn className="w-6 h-6" />
-            </a>
-          </div>
-          <div className="border-t border-gray-700 my-6 w-4/5 mx-auto"></div>
+                {/* Phone with link */}
+                <div className="flex items-center">
+                  <Phone className="w-5 h-5 mr-3 text-pink-500" />
+                  <a href="tel:+971525162071" className="hover:text-pink-500 transition-colors duration-300">
+                    +971 52 516 2071, +971564712381
+                  </a>
+                </div>
 
-          {/* Get in Touch */}
-          <div className="mb-10">
-            <h3 className="text-white text-lg font-semibold mb-6 pl-4">Get in Touch</h3>
-            <div className="space-y-4 text-white text-sm pl-4">
+                {/* Email with link */}
+                <div className="flex items-center">
+                  <Mail className="w-5 h-5 mr-3 text-pink-500" />
+                  <a href="mailto:info.nextdms@gmail.com" className="hover:text-pink-500 transition-colors duration-300">
+                    info.nextdms@gmail.com
+                  </a>
+                </div>
 
-              {/* Phone */}
-              <div className="flex items-center">
-                <Phone className="w-5 h-5 mr-3 text-pink-500" />
-                <span>+971 52 516 2071, +971564712381</span>
+                {/* Location with link */}
+                <div className="flex items-start">
+                  <MapPin className="w-5 h-5 mr-3 mt-1 text-pink-500" />
+                  <a 
+                    href="https://www.google.com/maps/search/Arzoo+building+Sharjah+Islamic+Bank+Al+Qusais+2+Dubai" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="hover:text-pink-500 transition-colors duration-300"
+                  >
+                    Arzoo building<br />
+                    (Sharjah Islamic Bank),<br />
+                    Al Qusais 2 , Dubai
+                  </a>
+                </div>
+
               </div>
-
-              {/* Email */}
-              <div className="flex items-center">
-                <Mail className="w-5 h-5 mr-3 text-pink-500" />
-                <span>info.nextdms@gmail.com</span>
-              </div>
-
-              {/* Location */}
-              <div className="flex items-start">
-                <MapPin className="w-5 h-5 mr-3 mt-1 text-pink-500" />
-                <span>
-                  Arzoo building<br />
-                  (Sharjah Islamic Bank),<br />
-                  Al Qusais 2 , Dubai
-                </span>
-              </div>
-
             </div>
           </div>
-
-
-          <div className="border-t border-gray-700 my-6 w-4/5 mx-auto"></div>
-
-          {/* Social Icons */}
-
         </div>
       </div>
     </>
