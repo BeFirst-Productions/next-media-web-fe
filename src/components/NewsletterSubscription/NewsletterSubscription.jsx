@@ -84,7 +84,7 @@ export const NewsletterSubscription = () => {
                 className="text-white/90 text-sm font-normal mb-8 leading-relaxed max-w-[340px]"
                 variants={itemVariants}
               >
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                Get a curated mix of our latest insights, exclusive project showcases, and strategic advice to help your business thrive.
               </motion.p>
               
               {/* Email input with embedded subscribe button */}

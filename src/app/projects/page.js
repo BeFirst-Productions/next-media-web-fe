@@ -1,5 +1,6 @@
 import Footer from '@/components/Footer/Footer'
 import Navbar from '@/components/Navbar/Navbar'
+import { ProjectsPageTitle } from '@/components/PageTitle/ProjectsPageTitle'
 
 import { ProjectsSection } from '@/components/ProjectsSection/ProjectsSection'
 import PremiumVideoBanner from '@/components/videoBanner/VideoBanner'
@@ -10,6 +11,7 @@ export default function project ()  {
     <>
   <Navbar/>
         <PremiumVideoBanner BannerTitle={'Our Projects'}/>
+      {/* <ProjectsPageTitle /> */}
   
      <ProjectsSection/>
       <Footer/>
