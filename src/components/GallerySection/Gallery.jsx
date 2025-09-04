@@ -17,7 +17,7 @@ export default function Gallery() {
   const ratios = ["aspect-[4/3]", "aspect-[3/4]", "aspect-[16/9]", "aspect-square"];
 
   return (
-    <section className="py-16 container-custom pt-32 md:pt-24 lg:pt-36">
+    <section className=" container-custom pt-15">
       <div className="w-full mx-auto ">
         <h2 className="text-3xl md:text-5xl font-bold text-center text-white mb-12">
           Our Gallery
