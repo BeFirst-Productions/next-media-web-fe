@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 @tailwind utilities;
 :root {
   --background: #ffffff;
@@ -20,56 +20,83 @@
 }
 @layer utilities {
   .container-custom {
-    @apply w-full mx-auto px-4 sm:px-6 lg:px-16 xl:px-34 ;
+    @apply w-full mx-auto px-4 sm:px-6 lg:px-16 xl:px-34;
   }
 }
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
-    overflow-x: hidden;
+  overflow-x: hidden;
 }
 
 @media (min-width: 1024px) and (max-width: 1079px) {
   .navbar-custom {
-   /* example spacing */
-    gap:0px;
+    /* example spacing */
+    gap: 0px;
     font-size: 13 px;
     /* example custom color */
   }
 }
 @media (min-width: 1024px) and (max-width: 1079px) {
   .navbar-logo {
-   /* example spacing */
-    margin-left:28px
+    /* example spacing */
+    margin-left: 28px;
     /* example custom color */
   }
 }
 @media (min-width: 1024px) and (max-width: 1079px) {
   .navbar-menu {
-   /* example spacing */
-    margin-right:28px
+    /* example spacing */
+    margin-right: 28px;
     /* example custom color */
   }
 }
 @media (min-width: 1024px) and (max-width: 1079px) {
   .custom-robot {
-   /* example spacing */
-    margin-left:50px
+    /* example spacing */
+    margin-left: 50px;
     /* example custom color */
   }
 }
 @media (min-width: 1024px) and (max-width: 1079px) {
   .custom-text1 {
-   /* example spacing */
-    font-size:50px;
+    /* example spacing */
+    font-size: 50px;
     /* example custom color */
   }
 }
 @media (min-width: 768px) and (max-width: 779px) {
   .custom-text2 {
-   /* example spacing */
-    font-size:50px;
+    /* example spacing */
+    font-size: 50px;
     /* example custom color */
   }
+}
+
+/* Add to your global CSS file */
+.glass-container {
+  background: rgba(239, 234, 234, 0.829);
+  backdrop-filter: blur(10px);
+  /* -webkit-backdrop-filter: blur(10px); */
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
 }

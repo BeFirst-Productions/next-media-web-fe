@@ -1,0 +1,28 @@
+# Next.js build output and cache
+.next/
+.npx/
+
+# Static files and build outputs
+public/
+dist/
+build/
+
+
+*.min.js
+*.min.css
+package-lock.json
+yarn.lock
+
+# Environment variables
+.env
+.env*.local
+
+# Dependencies
+node_modules/
+
+# IDE/Editor files 
+.vscode/
+.idea/
+*.swp
+*.swo
+*~

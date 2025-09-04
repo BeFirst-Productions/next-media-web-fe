@@ -1,11 +1,17 @@
-'use client'
+'use client';
 import { useState, useEffect } from 'react';
-import { Phone, Mail, MapPin } from "lucide-react";
-import { FaFacebookF, FaInstagram, FaYoutube, FaLinkedinIn } from "react-icons/fa";
+import { Phone, Mail, MapPin } from 'lucide-react';
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaYoutube,
+  FaLinkedinIn,
+} from 'react-icons/fa';
 
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { FaXTwitter } from 'react-icons/fa6';
 
 const Navbar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -82,23 +88,35 @@ const Navbar = () => {
             >
               Home
             </Link>
-            <Link href="/aboutus" 
+            <Link
+              href="/aboutus"
               className={`${isAboutUsPage ? 'text-transparent bg-clip-text bg-gradient-to-b from-[#F53A7A] to-[#190CD2]' : 'text-white'} hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-b hover:from-[#F53A7A] hover:to-[#190CD2] transition-all duration-300`}
-             > About Us
+            >
+              {' '}
+              About Us
             </Link>
-            <Link href="/services"
+            <Link
+              href="/services"
               className={`${isServicePage ? 'text-transparent bg-clip-text bg-gradient-to-b from-[#F53A7A] to-[#190CD2]' : 'text-white'} hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-b hover:from-[#F53A7A] hover:to-[#190CD2] transition-all duration-300`}
-            > Services
+            >
+              {' '}
+              Services
             </Link>
             {/* <Link href="#" className="text-white hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-b hover:from-[#F53A7A] hover:to-[#190CD2] transition-all duration-300">
               Clients
             </Link> */}
-            <Link href="/projects" className="text-white hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-b hover:from-[#F53A7A] hover:to-[#190CD2] transition-all duration-300">
+            <Link
+              href="/projects"
+              className="text-white hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-b hover:from-[#F53A7A] hover:to-[#190CD2] transition-all duration-300"
+            >
               Projects
             </Link>
-            <Link href="/contact"
+            <Link
+              href="/contact"
               className={`${isContactPage ? 'text-transparent bg-clip-text bg-gradient-to-b from-[#F53A7A] to-[#190CD2]' : 'text-white'} hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-b hover:from-[#F53A7A] hover:to-[#190CD2] transition-all duration-300`}
-            > Contact
+            >
+              {' '}
+              Contact
             </Link>
           </div>
 
@@ -141,8 +159,11 @@ const Navbar = () => {
 
       {/* Mobile Sidebar with higher z-index */}
       <div
-        className={`fixed top-0 right-0 z-50 h-full bg-gray-900/95 backdrop-blur-md lg:w-2/5 xl:w-1/5 md:w-1/2 w-full flex flex-col transform transition-all duration-500 ease-out overflow-hidden ${isSidebarOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
-          }`}
+        className={`fixed top-0 right-0 z-50 h-full bg-gray-900/95 backdrop-blur-md lg:w-2/5 xl:w-1/5 md:w-1/2 w-full flex flex-col transform transition-all duration-500 ease-out overflow-hidden ${
+          isSidebarOpen
+            ? 'translate-x-0 opacity-100'
+            : 'translate-x-full opacity-0'
+        }`}
       >
         <div className="flex flex-col h-full px-8 overflow-y-auto">
           {/* Close button */}
@@ -264,36 +285,60 @@ const Navbar = () => {
             <div className="border-t border-gray-700 my-6 w-4/5 mx-auto"></div>
             <div className="flex space-x-6 pl-4 p-6 md:p-4">
               {/* Facebook */}
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-pink-500 transition-all duration-300">
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white hover:text-pink-500 transition-all duration-300"
+              >
                 <FaFacebookF className="w-6 h-6" />
               </a>
 
               {/* Instagram */}
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-pink-500 transition-all duration-300">
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white hover:text-pink-500 transition-all duration-300"
+              >
                 <FaInstagram className="w-6 h-6" />
               </a>
 
-              {/* YouTube */}
-              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-pink-500 transition-all duration-300">
-                <FaYoutube className="w-6 h-6" />
+              {/* Twitter */}
+              <a
+                href="https://twitter.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white hover:text-pink-500 transition-all duration-300"
+              >
+                <FaXTwitter className="w-6 h-6" />
               </a>
 
               {/* LinkedIn */}
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-pink-500 transition-all duration-300">
+              <a
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white hover:text-pink-500 transition-all duration-300"
+              >
                 <FaLinkedinIn className="w-6 h-6" />
               </a>
             </div>
-            
+
             {/* Get in Touch - positioned at bottom on large screens */}
             <div className="mt-auto pb-10">
               <div className="border-t border-gray-700 my-6 w-4/5 mx-auto"></div>
-              <h3 className="text-white text-lg font-semibold mb-6 pl-4">Get in Touch</h3>
+              <h3 className="text-white text-lg font-semibold mb-6 pl-4">
+                Get in Touch
+              </h3>
               <div className="space-y-4 text-white text-sm pl-4">
-
                 {/* Phone with link */}
                 <div className="flex items-center">
                   <Phone className="w-5 h-5 mr-3 text-pink-500" />
-                  <a href="tel:+971525162071" className="hover:text-pink-500 transition-colors duration-300">
+                  <a
+                    href="tel:+971525162071"
+                    className="hover:text-pink-500 transition-colors duration-300"
+                  >
                     +971 52 516 2071, +971564712381
                   </a>
                 </div>
@@ -301,7 +346,10 @@ const Navbar = () => {
                 {/* Email with link */}
                 <div className="flex items-center">
                   <Mail className="w-5 h-5 mr-3 text-pink-500" />
-                  <a href="mailto:info.nextdms@gmail.com" className="hover:text-pink-500 transition-colors duration-300">
+                  <a
+                    href="mailto:info.nextdms@gmail.com"
+                    className="hover:text-pink-500 transition-colors duration-300"
+                  >
                     info.nextdms@gmail.com
                   </a>
                 </div>
@@ -309,18 +357,19 @@ const Navbar = () => {
                 {/* Location with link */}
                 <div className="flex items-start">
                   <MapPin className="w-5 h-5 mr-3 mt-1 text-pink-500" />
-                  <a 
-                    href="https://www.google.com/maps/search/Arzoo+building+Sharjah+Islamic+Bank+Al+Qusais+2+Dubai" 
-                    target="_blank" 
+                  <a
+                    href="https://www.google.com/maps/search/Arzoo+building+Sharjah+Islamic+Bank+Al+Qusais+2+Dubai"
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="hover:text-pink-500 transition-colors duration-300"
                   >
-                    Arzoo building<br />
-                    (Sharjah Islamic Bank),<br />
+                    Arzoo building
+                    <br />
+                    (Sharjah Islamic Bank),
+                    <br />
                     Al Qusais 2 , Dubai
                   </a>
                 </div>
-
               </div>
             </div>
           </div>
