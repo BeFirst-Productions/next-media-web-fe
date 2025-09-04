@@ -27,8 +27,11 @@ export default function GalleryPage(){
         
         <Navbar/>
         {/* <PremiumVideoBanner BannerTitle={'Gallery'}/> */}
+<div className="py-36">
 
       <Gallery/>
+            </div>
+
       <Footer/>
     </div>
   )
