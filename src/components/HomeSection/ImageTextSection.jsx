@@ -8,7 +8,7 @@ const ImageTextSection = () => {
   const [isHovering, setIsHovering] = useState(false);
   
   const HighlightWord = ({ children }) => (
-    <span className="relative inline-block">
+    <span className=" inline-block">
       <span
         className="text-transparent"
         style={{
