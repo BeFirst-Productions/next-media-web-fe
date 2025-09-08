@@ -1,6 +1,8 @@
 import { Inter } from 'next/font/google';
 import './globals.css';
 import BackgroundEffects from '@/components/BackgroundEffect/BackgroundEffects';
+import { ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -16,7 +18,17 @@ export default function RootLayout({ children }) {
         <BackgroundEffects />
         <div className="relative z-10"> {/* This wraps Navbar and main content */}
         
-          {children} {/* Your page content is injected here */}
+          {children}
+          <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={true}
+          closeOnClick
+          pauseOnHover
+          draggable
+          theme="colored"
+        /> {/* Your page content is injected here */}
         </div>
       </body>
     </html>

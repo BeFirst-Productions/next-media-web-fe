@@ -3,9 +3,11 @@ import Footer from "@/components/Footer/Footer";
 
 import AboutSection from "@/components/HomeSection/AboutSection";
 import ClientSections from "@/components/HomeSection/ClientSections";
+import FAQSection from "@/components/HomeSection/FaqSection";
 import HeroSection from "@/components/HomeSection/HeroSection";
 import ImageTextSection from "@/components/HomeSection/ImageTextSection";
 import ServiceSection from "@/components/HomeSection/ServiceSection";
+import TestimonialSection from "@/components/HomeSection/TestimonialSection";
 import ValuesSection from "@/components/HomeSection/ValuesSection";
 import Navbar from "@/components/Navbar/Navbar";
 export const metadata = {
@@ -40,6 +42,8 @@ export default function Home() {
       <ServiceSection/>
       <ImageTextSection/>
       <ValuesSection/>
+      <FAQSection/>
+      <TestimonialSection/>
       <ClientSections/>
       <NewsletterSubscription/>
       <Footer/>

@@ -11,7 +11,7 @@ const AboutSection = () => {
   const contentControls = useAnimation();
   const bgControls = useAnimation();
   const HighlightWord = ({ children }) => (
-    <span className="relative inline-block">
+    <span className=" inline-block">
       <span
         className="text-transparent"
         style={{
