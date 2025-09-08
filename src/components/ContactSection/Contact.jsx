@@ -1,13 +1,20 @@
 "use client"
+import axios from 'axios';
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 
 export default function ContactPage() {
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
         email: '',
+        service: '',       // selected service
+        serviceOther: '',  // if "Others" is selected
         message: ''
     });
+
+    const [errors, setErrors] = useState({});
+    const [isLoading, setIsLoading] = useState(false); // ✅ Loader state
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -17,18 +24,74 @@ export default function ContactPage() {
         }));
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // Handle form submission here
-        console.log('Form submitted:', formData);
-        alert('Thank you for your message! We will get back to you soon.');
-        setFormData({
-            firstName: '',
-            lastName: '',
-            email: '',
-            message: ''
-        });
+    const validate = () => {
+        let newErrors = {};
+
+        if (!formData.firstName.trim()) {
+            newErrors.firstName = "First name is required.";
+        } else if (!/^[A-Za-z]{2,}$/.test(formData.firstName)) {
+            newErrors.firstName = "First name must be at least 2 letters.";
+        }
+
+        if (!formData.lastName.trim()) {
+            newErrors.lastName = "Last name is required.";
+        } else if (!/^[A-Za-z]{2,}$/.test(formData.lastName)) {
+            newErrors.lastName = "Last name must be at least 2 letters.";
+        }
+
+        if (!formData.email.trim()) {
+            newErrors.email = "Email is required.";
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+            newErrors.email = "Enter a valid email address.";
+        }
+        if (!formData.service) {
+            newErrors.service = "Please select a service.";
+        } else if (formData.service === "Others" && !formData.serviceOther.trim()) {
+            newErrors.service = "Please specify the service.";
+        }
+
+        if (!formData.message.trim()) {
+            newErrors.message = "Message is required.";
+        } else if (formData.message.length < 10) {
+            newErrors.message = "Message must be at least 10 characters.";
+        }
+
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
     };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        if (!validate()) {
+            toast.error("Please fix the errors in the form.");
+            return;
+        }
+
+        setIsLoading(true); // ✅ Start loader
+
+        try {
+            const res = await axios.post("/api/contact", formData);
+            if (res.status === 200 && res.data.success) {
+                toast.success("✅ Your message has been sent successfully!");
+                setFormData({
+                    firstName: "",
+                    lastName: "",
+                    email: "",
+                    service: "",
+                    serviceOther: "",
+                    message: ""
+                }); setErrors({});
+            } else {
+                toast.error("❌ Failed to send message. Please try again later.");
+            }
+        } catch (err) {
+            toast.error("⚠️ Something went wrong!");
+        } finally {
+            setIsLoading(false); // ✅ Stop loader
+        }
+    };
+
 
     return (
         <>
@@ -55,11 +118,13 @@ export default function ContactPage() {
                                                 type="text"
                                                 name="firstName"
                                                 id="firstName"
-                                                required
                                                 value={formData.firstName}
                                                 onChange={handleChange}
                                                 className="mt-1 block w-full border bg-white border-gray-300 rounded-lg shadow-sm py-2 px-4 text-black focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                                             />
+                                            {errors.firstName && (
+                                                <p className="text-red-500 text-sm mt-1">{errors.firstName}</p>
+                                            )}
                                         </div>
 
                                         <div>
@@ -70,11 +135,13 @@ export default function ContactPage() {
                                                 type="text"
                                                 name="lastName"
                                                 id="lastName"
-                                                required
                                                 value={formData.lastName}
                                                 onChange={handleChange}
                                                 className="mt-1 block w-full border text-black bg-white border-gray-300 rounded-lg shadow-sm py-2 px-4 text-base focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                                             />
+                                            {errors.lastName && (
+                                                <p className="text-red-500 text-sm mt-1">{errors.lastName}</p>
+                                            )}
                                         </div>
                                     </div>
 
@@ -86,12 +153,61 @@ export default function ContactPage() {
                                             type="email"
                                             name="email"
                                             id="email"
-                                            required
                                             value={formData.email}
                                             onChange={handleChange}
                                             className="mt-1 block w-full border bg-white text-black border-gray-300 rounded-lg shadow-sm py-2 px-4 text-base focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                                         />
+                                        {errors.email && (
+                                            <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+                                        )}
                                     </div>
+                                   <div>
+  <label htmlFor="service" className="block text-lg font-medium mb-2">
+    Services
+  </label>
+
+  <select
+    name="service"
+    id="service"
+    value={formData.service}
+    onChange={(e) =>
+      setFormData((prev) => ({
+        ...prev,
+        service: e.target.value,
+        serviceOther: "", // reset serviceOther when changing selection
+      }))
+    }
+    className="mt-1 block w-full border bg-white text-black border-gray-300 rounded-lg shadow-sm py-2 px-4 text-base focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+  >
+    <option value="">-- Select a service --</option>
+    <option value="WEB DESIGN & DEVELOPMENT">WEB DESIGN & DEVELOPMENT</option>
+    <option value="VIDEOGRAPHY SERVICES">VIDEOGRAPHY SERVICES</option>
+    <option value="BRANDING & IDENTITY">BRANDING & IDENTITY</option>
+    <option value="PHOTOGRAPHY SERVICES">PHOTOGRAPHY SERVICES</option>
+    <option value="SOCIAL MEDIA MARKETING">SOCIAL MEDIA MARKETING</option>
+    <option value="CONTENT MARKETING">CONTENT MARKETING</option>
+    <option value="Others">Others</option>
+  </select>
+  {errors.service && (
+    <p className="text-red-500 text-sm mt-1">{errors.service}</p>
+  )}
+
+  {/* Show input only if "Others" is selected */}
+  {formData.service === "Others" && (
+    <input
+      type="text"
+      name="serviceOther"
+      placeholder="Please specify"
+      value={formData.serviceOther}
+      onChange={(e) =>
+        setFormData((prev) => ({ ...prev, serviceOther: e.target.value }))
+      }
+      className="mt-2 block w-full border bg-white text-black border-gray-300 rounded-lg shadow-sm py-2 px-4 text-base focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+    />
+  )}
+</div>
+
+
 
                                     <div>
                                         <label htmlFor="message" className="block text-lg font-medium mb-2">
@@ -101,25 +217,54 @@ export default function ContactPage() {
                                             id="message"
                                             name="message"
                                             rows={4}
-                                            required
                                             value={formData.message}
                                             onChange={handleChange}
                                             className="mt-1 block w-full border bg-white text-black border-gray-300 rounded-lg shadow-sm py-2 px-4 text-base focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                                         />
+                                        {errors.message && (
+                                            <p className="text-red-500 text-sm mt-1">{errors.message}</p>
+                                        )}
                                     </div>
 
                                     <div>
-                                                                                                                              <button
+                                        <button
                                             type="submit"
-                                            className="w-full inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-lg text-white 
-             bg-gradient-to-r from-purple-500 to-pink-500 
-             hover:from-purple-600 hover:to-pink-600
-             focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 
-             transition-colors duration-300"
+                                            disabled={isLoading}
+                                            className={`w-full inline-flex justify-center items-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-lg 
+                      bg-gradient-to-r from-purple-500 to-pink-500 
+                      hover:from-purple-600 hover:to-pink-600
+                      focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 
+                      transition-colors duration-300 ${isLoading ? "opacity-70 cursor-not-allowed" : ""
+                                                }`}
                                         >
-                                            Submit
+                                            {isLoading ? (
+                                                <div className="flex items-center gap-2">
+                                                    <svg
+                                                        className="animate-spin h-5 w-5 text-white"
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        fill="none"
+                                                        viewBox="0 0 24 24"
+                                                    >
+                                                        <circle
+                                                            className="opacity-25"
+                                                            cx="12"
+                                                            cy="12"
+                                                            r="10"
+                                                            stroke="currentColor"
+                                                            strokeWidth="4"
+                                                        ></circle>
+                                                        <path
+                                                            className="opacity-75"
+                                                            fill="currentColor"
+                                                            d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                                                        ></path>
+                                                    </svg>
+                                                    Sending...
+                                                </div>
+                                            ) : (
+                                                "Submit"
+                                            )}
                                         </button>
-
                                     </div>
                                 </form>
                             </div>
@@ -128,7 +273,7 @@ export default function ContactPage() {
                             <div className="hidden lg:block w-9 xl:w-16 bg-transparent"></div>
 
                             {/* Right Side - Get in Touch */}
-                            <div className="w-full lg:w-1/2 p-8 text-white">
+                            <div className="w-full lg:w-1/2 p-8 text-white  flex flex-col justify-center">
                                 <h2 className="text-xl md:text-2xl font-bold mb-4">Get in Touch</h2>
 
                                 <div className="mb-6">
