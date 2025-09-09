@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { useEffect, useRef, useState } from 'react';
 import { motion, useAnimation, AnimatePresence } from 'framer-motion';
@@ -6,68 +6,68 @@ import { motion, useAnimation, AnimatePresence } from 'framer-motion';
 const services = [
   {
     id: 1,
-    title: "WEB DESIGN & DEVELOPMENT",
+    title: 'WEB DESIGN & DEVELOPMENT',
     services: [
-      "Custom Website Design",
-      "E-Commerce Solutions",
-      "UX/UI Design",
-      "Website Maintenance & Support"
+      'Custom Website Design',
+      'E-Commerce Solutions',
+      'UX/UI Design',
+      'Website Maintenance & Support',
     ],
-    logo: "/logos/services/web-design.png",
+    logo: '/logos/services/web-design.png',
   },
   {
     id: 2,
-    title: "VIDEOGRAPHY SERVICES",
+    title: 'VIDEOGRAPHY SERVICES',
     services: [
-      "Promotional Videos",
-      "Product Videos",
-      "Event/Wedding Coverage",
-      "Social Media Reels",
-      "Podcast Shoot"
+      'Promotional Videos',
+      'Product Videos',
+      'Event/Wedding Coverage',
+      'Social Media Reels',
+      'Podcast Shoot',
     ],
-    logo: "/logos/services/video.png",
+    logo: '/logos/services/video.png',
   },
   {
     id: 3,
-    title: "BRANDING & IDENTITY",
+    title: 'BRANDING & IDENTITY',
     services: [
-      "Brand Strategy & Positioning",
-      "Logo Design & Visual Identity",
-      "Brand Guidelines & Messaging"
+      'Brand Strategy & Positioning',
+      'Logo Design & Visual Identity',
+      'Brand Guidelines & Messaging',
     ],
-    logo: "/logos/services/branding.png",
+    logo: '/logos/services/branding.png',
   },
   {
     id: 4,
-    title: "PHOTOGRAPHY SERVICES",
+    title: 'PHOTOGRAPHY SERVICES',
     services: [
-      "Product Photography",
-      "Event Photography",
-      "Personal Photoshoot",
-      "Wedding Photography"
+      'Product Photography',
+      'Event Photography',
+      'Personal Photoshoot',
+      'Wedding Photography',
     ],
-    logo: "/logos/services/photo-camera.png",
+    logo: '/logos/services/photo-camera.png',
   },
   {
     id: 5,
-    title: "SOCIAL MEDIA MARKETING",
+    title: 'SOCIAL MEDIA MARKETING',
     services: [
-      "Content Planning & Creation",
-      "Account Management",
-      "Community Engagement",
-      "Social Media Advertising"
+      'Content Planning & Creation',
+      'Account Management',
+      'Community Engagement',
+      'Social Media Advertising',
     ],
-    logo: "/logos/services/social-media.png",
+    logo: '/logos/services/social-media.png',
   },
   {
     id: 6,
-    title: "CONTENT MARKETING",
+    title: 'CONTENT MARKETING',
     services: [
-      "Blog & Article Writing",
-      "Graphic Design & Visual Content",
-      "Video Production & Editing"
+      'Blog & Article Writing',
+      'Graphic Design & Visual Content',
+      'Video Production & Editing',
     ],
-    logo: "/logos/services/content-marketing.png",
+    logo: '/logos/services/content-marketing.png',
   },
 ];
 
@@ -131,8 +131,8 @@ const ServiceSection = () => {
     }
 
     // Desktop: show exactly 3 cards (left, center, right)
-    const activeServiceIndex = services.findIndex(s => s.id === activeIndex);
-    const serviceIndex = services.findIndex(s => s.id === index);
+    const activeServiceIndex = services.findIndex((s) => s.id === activeIndex);
+    const serviceIndex = services.findIndex((s) => s.id === index);
 
     // Calculate the relative position in a circular manner
     let relativePos = serviceIndex - activeServiceIndex;
@@ -143,8 +143,10 @@ const ServiceSection = () => {
 
     // Only show the center card and its immediate neighbors
     if (relativePos === 0) return 'center';
-    if (relativePos === -1 || relativePos === services.length - 1) return 'left';
-    if (relativePos === 1 || relativePos === -services.length + 1) return 'right';
+    if (relativePos === -1 || relativePos === services.length - 1)
+      return 'left';
+    if (relativePos === 1 || relativePos === -services.length + 1)
+      return 'right';
 
     return 'hidden';
   };
@@ -160,7 +162,12 @@ const ServiceSection = () => {
           scale: 0.85,
           opacity: 0.8,
           zIndex: 2,
-          transition: { type: 'spring', stiffness: 300, damping: 20, duration: 0.5 }
+          transition: {
+            type: 'spring',
+            stiffness: 300,
+            damping: 20,
+            duration: 0.5,
+          },
         },
         center: {
           x: '0%',
@@ -168,7 +175,12 @@ const ServiceSection = () => {
           scale: 1,
           opacity: 1,
           zIndex: 3,
-          transition: { type: 'spring', stiffness: 300, damping: 20, duration: 0.5 }
+          transition: {
+            type: 'spring',
+            stiffness: 300,
+            damping: 20,
+            duration: 0.5,
+          },
         },
         right: {
           x: '120%',
@@ -176,7 +188,12 @@ const ServiceSection = () => {
           scale: 0.85,
           opacity: 0.8,
           zIndex: 2,
-          transition: { type: 'spring', stiffness: 300, damping: 20, duration: 0.5 }
+          transition: {
+            type: 'spring',
+            stiffness: 300,
+            damping: 20,
+            duration: 0.5,
+          },
         },
         hidden: {
           x: '0%',
@@ -184,8 +201,8 @@ const ServiceSection = () => {
           scale: 0.7,
           opacity: 0,
           zIndex: 1,
-          transition: { duration: 0.3 }
-        }
+          transition: { duration: 0.3 },
+        },
       };
     }
 
@@ -197,7 +214,12 @@ const ServiceSection = () => {
         scale: 0.85,
         opacity: 0.8,
         zIndex: 2,
-        transition: { type: 'spring', stiffness: 300, damping: 20, duration: 0.5 }
+        transition: {
+          type: 'spring',
+          stiffness: 300,
+          damping: 20,
+          duration: 0.5,
+        },
       },
       center: {
         x: '0%',
@@ -205,7 +227,12 @@ const ServiceSection = () => {
         scale: 1,
         opacity: 1,
         zIndex: 3,
-        transition: { type: 'spring', stiffness: 300, damping: 20, duration: 0.5 }
+        transition: {
+          type: 'spring',
+          stiffness: 300,
+          damping: 20,
+          duration: 0.5,
+        },
       },
       right: {
         x: '105%',
@@ -213,7 +240,12 @@ const ServiceSection = () => {
         scale: 0.85,
         opacity: 0.8,
         zIndex: 2,
-        transition: { type: 'spring', stiffness: 300, damping: 20, duration: 0.5 }
+        transition: {
+          type: 'spring',
+          stiffness: 300,
+          damping: 20,
+          duration: 0.5,
+        },
       },
       hidden: {
         x: '0%',
@@ -221,16 +253,16 @@ const ServiceSection = () => {
         scale: 0.7,
         opacity: 0,
         zIndex: 1,
-        transition: { duration: 0.3 }
-      }
+        transition: { duration: 0.3 },
+      },
     };
   };
 
   return (
     <section className="py-16 container-custom">
-  <div className="w-full ">
+      <div className="w-full ">
         <motion.h2
-          className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-8 text-white"
+          className="text-3xl md:text-4xl lg:text-5xl font-bold text-center  text-white"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -240,7 +272,10 @@ const ServiceSection = () => {
         </motion.h2>
 
         {/* Responsive container with different widths */}
-        <div className={`relative ${isMobile ? 'h-[32rem]' : 'h-[40rem]'} w-full ${isMobile ? 'max-w-md' : isLgScreen ? 'max-w-6xl' : 'max-w-4xl'} mx-auto flex justify-center items-center overflow-visible`} ref={containerRef}>
+        <div
+          className={`relative ${isMobile ? 'h-[32rem]' : 'h-[40rem]'} w-full ${isMobile ? 'max-w-md' : isLgScreen ? 'max-w-6xl' : 'max-w-4xl'} mx-auto flex justify-center items-center overflow-visible`}
+          ref={containerRef}
+        >
           <AnimatePresence>
             {services.map((service) => {
               const position = getCardPosition(service.id);
@@ -249,11 +284,11 @@ const ServiceSection = () => {
               return (
                 <motion.div
                   key={service.id}
-                  className={`absolute ${isMobile ? 'w-72' : isLgScreen ? 'w-96' : 'w-96'} h-[26rem] md:h-[28rem] p-6 md:p-8 rounded-3xl shadow-2xl cursor-pointer ${position === 'center'
+                  className={`absolute ${isMobile ? 'w-72' : isLgScreen ? 'w-96' : 'w-96'} h-[26rem] md:h-[28rem] p-6 md:p-8 rounded-3xl shadow-2xl cursor-pointer ${
+                    position === 'center'
                       ? 'bg-black/60'
                       : 'bg-gray-800/90 backdrop-blur-sm'
-                    } [@media(min-width:1440px)_and_(max-width:1535px)]:w-72 [@media(min-width:1024px)_and_(max-width:1200px)]:w-72`}
-
+                  } [@media(min-width:1440px)_and_(max-width:1535px)]:w-72 [@media(min-width:1024px)_and_(max-width:1200px)]:w-72`}
                   style={{
                     originX: 0.5,
                     originY: 0.5,
@@ -263,18 +298,27 @@ const ServiceSection = () => {
                   initial="hidden"
                   exit="hidden"
                   onClick={() => selectCard(service.id)}
-                  whileHover={!isMobile ? { scale: position === 'center' ? 1.05 : 1.02 } : {}}
+                  whileHover={
+                    !isMobile
+                      ? { scale: position === 'center' ? 1.05 : 1.02 }
+                      : {}
+                  }
                 >
                   <div className="flex flex-col items-center justify-center h-full">
-                    <div className={`w-16 h-16 md:w-20 md:h-20 mb-4 md:mb-6 flex items-center justify-center ${position === 'center' ? 'text-white' : 'text-gray-400'}`}>
+                    <div
+                      className={`w-16 h-16 md:w-20 md:h-20 mb-4 md:mb-6 flex items-center justify-center ${position === 'center' ? 'text-white' : 'text-gray-400'}`}
+                    >
                       <img
                         src={service.logo}
                         alt={service.title}
                         className="w-full h-full object-contain mb-11"
                       />
                     </div>
-                    <h3 className={`text-xl md:text-2xl font-bold mb-4 md:mb-6 text-center ${position === 'center' ? 'text-white' : 'text-gray-300'
-                      }`}>
+                    <h3
+                      className={`text-xl md:text-2xl font-bold mb-4 md:mb-6 text-center ${
+                        position === 'center' ? 'text-white' : 'text-gray-300'
+                      }`}
+                    >
                       {service.title}
                     </h3>
 
@@ -304,10 +348,11 @@ const ServiceSection = () => {
             <button
               key={service.id}
               onClick={() => selectCard(service.id)}
-              className={`rounded-full transition-all ${service.id === activeIndex
+              className={`rounded-full transition-all ${
+                service.id === activeIndex
                   ? 'bg-pink-500 w-6 h-3'
                   : 'bg-gray-600 w-3 h-3 hover:bg-gray-500'
-                }`}
+              }`}
               aria-label={`Go to ${service.title}`}
             />
           ))}
