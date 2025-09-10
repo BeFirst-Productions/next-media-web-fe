@@ -24,9 +24,9 @@ const ClientSections = () => {
       logo: '/images/our-clients/ASCENTAM_LOGO_black-DGCKZOSi.png',
     },
     { id: 7, name: 'befirst', logo: '/images/our-clients/befirst.png' },
-    { id: 8, name: 'befirst-hr', logo: '/images/our-clients/befirst-hr.png' },
-    { id: 9, name: 'bizdoc', logo: '/images/our-clients/bizdoc.png' },
-    { id: 10, name: 'NOORA', logo: '/images/our-clients/NOORA.png' },
+    { id: 8, name: 'bizdoc', logo: '/images/our-clients/bizdoc.png' },
+    { id: 9, name: 'NOORA', logo: '/images/our-clients/NOORA.png' },
+    { id: 10, name: 'befirst-hr', logo: '/images/our-clients/befirst-hr.png' },
     { id: 11, name: 'EWF', logo: '/images/our-clients/EWF.png' },
     { id: 12, name: 'B&B', logo: '/images/our-clients/B&B.png' },
     {
