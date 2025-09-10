@@ -5,7 +5,7 @@ import { useRef, useEffect, useState } from 'react';
 const ClientSections = () => {
   // Sample client data
   const clients = [
-    { id: 1, name: 'wide-range', logo: '/images/our-clients/wide-range.jpg' },
+    { id: 1, name: 'wide-range', logo: '/images/our-clients/wide_range1.png' },
     {
       id: 2,
       name: 'kozhicode restaurant',
@@ -14,17 +14,37 @@ const ClientSections = () => {
     {
       id: 3,
       name: 'shay al karam.',
-      logo: '/images/our-clients/shay al karam.png',
+      logo: '/images/our-clients/shay_al_karam1.png',
     },
-    { id: 4, name: 'emirates', logo: '/images/our-clients/emirates.png' },
-    { id: 5, name: 'OIP', logo: '/images/our-clients/OIP.png' },
+    { id: 4, name: 'emirates', logo: '/images/our-clients/emirates1.png' },
+    { id: 5, name: 'OIP', logo: '/images/our-clients/OIP1.png' },
     {
       id: 6,
       name: 'FaceASCENTAM_LOGO_black-DGCKZOSibook',
       logo: '/images/our-clients/ASCENTAM_LOGO_black-DGCKZOSi.png',
     },
-    { id: 7, name: 'wide-range', logo: '/images/our-clients/wide-range.jpg' },
-    { id: 8, name: 'wide-range', logo: '/images/our-clients/wide-range.jpg' },
+    { id: 7, name: 'befirst', logo: '/images/our-clients/befirst.png' },
+    { id: 8, name: 'befirst-hr', logo: '/images/our-clients/befirst-hr.png' },
+    { id: 9, name: 'bizdoc', logo: '/images/our-clients/bizdoc.png' },
+    { id: 10, name: 'NOORA', logo: '/images/our-clients/NOORA.png' },
+    { id: 11, name: 'EWF', logo: '/images/our-clients/EWF.png' },
+    { id: 12, name: 'B&B', logo: '/images/our-clients/B&B.png' },
+    {
+      id: 12,
+      name: 'IF-Logo_Artboard',
+      logo: '/images/our-clients/IF-Logo_Artboard.png',
+    },
+    { id: 12, name: 'Smash', logo: '/images/our-clients/Smash.png' },
+    {
+      id: 12,
+      name: 'adams aurum ',
+      logo: '/images/our-clients/adams aurum.png',
+    },
+    {
+      id: 12,
+      name: 'AL-ADEED-BUSINESS-GROUP',
+      logo: '/images/our-clients/AL-ADEED-BUSINESS-GROUP.png',
+    },
   ];
 
   const duplicatedClients = [...clients, ...clients];
