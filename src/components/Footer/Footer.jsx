@@ -13,7 +13,7 @@ import { FaXTwitter } from 'react-icons/fa6';
 const Footer = () => {
   return (
     <>
-      <footer className="relative border-t border-gray-300/30 bg-gradient-to-br from-purple-800/30 via-gray-900/30 to-black text-white py-12 container-custom overflow-hidden">
+      <footer className="relative border-t  border-gray-300/30 bg-gradient-to-br from-purple-800/30 via-gray-900/30 to-black text-white py-12 container-custom overflow-hidden">
         {/* Geometric Background Pattern */}
         {/* <div className="absolute inset-0 opacity-10">
           <svg className="w-full h-full" viewBox="0 0 1200 400" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -29,7 +29,7 @@ const Footer = () => {
         </div> */}
 
         {/* Enhanced Right Side Geometric Element */}
-        <div className="absolute right-0 bottom-0 w-full h-full pointer-events-none overflow-hidden">
+        <div className="absolute right-0 bottom-0  w-full h-full pointer-events-none overflow-hidden">
           <div className="relative w-full h-full">
             {/* Main Geometric Image */}
             <div className="absolute right-0 bottom-0 lg:right-[-180] lg:top-[-60]  md:right-4 md:bottom-4 sm:right-2 sm:bottom-2">
@@ -68,13 +68,13 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
+        <div className="w-full  mx-auto relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 2xl:g gap-8 lg:gap-10">
             {/* Brand Section */}
             <div className="lg:col-span-1">
               <div className="flex items-center mb-8">
                 <Image
-                  src="/logos/footer-logo.png"
+                  src="/logos/logo1.png"
                   alt="Logo"
                   width={195}
                   height={70}
@@ -83,7 +83,7 @@ const Footer = () => {
                 />
               </div>
 
-              <p className="text-gray-300 text-sm font-normal leading-5 mb-8">
+              <p className="text-gray-300 text-sm font-normal leading-5 mb-8 max-w-md 2xl:max-w-xs">
                 We create branding solutions that help businesses grow.
               </p>
 
@@ -98,7 +98,7 @@ const Footer = () => {
                   <FaInstagram className="w-5 h-5" />
                 </a>
                 <a
-                  href="https://facebook.com"
+                  href="https://www.facebook.com/nextdms"
                   target="_blank"
                   rel="noreferrer"
                   className="social-icon-glass"
@@ -209,6 +209,7 @@ const Footer = () => {
                 Get In Touch
               </h3>
               <div className="space-y-4">
+                {/* Phone numbers */}
                 <div className="flex items-start space-x-3">
                   <div className="flex-shrink-0 mt-1">
                     <svg
@@ -220,14 +221,24 @@ const Footer = () => {
                     </svg>
                   </div>
                   <div className="flex flex-col space-y-1">
-                    <p className="text-gray-300 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-[#F53A7A] hover:to-[#190CD2] transition-all duration-300 text-base font-normal cursor-pointer">
+                    {/* First number clickable */}
+                    <a
+                      href="tel:+971588984455"
+                      className="text-gray-300 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-[#F53A7A] hover:to-[#190CD2] transition-all duration-300 text-base font-normal cursor-pointer"
+                    >
+                      +971 58 898 4455
+                    </a>
+                    {/* Second number static (not clickable) */}
+                    <a
+                      href="tel:+971525162071"
+                      className="text-gray-300 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-[#F53A7A] hover:to-[#190CD2] transition-all duration-300 text-base font-normal cursor-pointer"
+                    >
                       +971 52 516 2071
-                    </p>
-                    <p className="text-gray-300 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-[#F53A7A] hover:to-[#190CD2] transition-all duration-300 text-base font-normal cursor-pointer">
-                      +971 56 471 2381
-                    </p>
+                    </a>
                   </div>
                 </div>
+
+                {/* Email */}
                 <div className="flex items-start space-x-3">
                   <div className="flex-shrink-0 mt-1">
                     <svg
@@ -240,23 +251,14 @@ const Footer = () => {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-gray-300 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-b hover:from-[#F53A7A] hover:to-[#190CD2] transition-all duration-300 text-base font-normal cursor-pointer">
+                    <a
+                      href="mailto:info.nextdms@gmail.com"
+                      className="text-gray-300 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-b hover:from-[#F53A7A] hover:to-[#190CD2] transition-all duration-300 text-base font-normal cursor-pointer"
+                    >
                       info.nextdms@gmail.com
-                    </p>
+                    </a>
                   </div>
                 </div>
-                {/* <div className='flex items-end space-x-3'>
-                  <div className='flex-shrink-0 mt-1'>
-                    <svg className='w-5 h-5 text-gray-200' fill='currentColor' viewBox='0 0 20 20'>
-                      <path fillRule='evenodd' d='M4.083 9h1.946c.089-1.546.383-2.97.837-4.118A6.004 6.004 0 004.083 9zM10 2a8 8 0 100 16 8 8 0 000-16zm0 2c-.076 0-.232.032-.465.262-.238.234-.497.623-.737 1.182-.389.907-.673 2.142-.766 3.556h3.936c-.093-1.414-.377-2.649-.766-3.556-.24-.56-.5-.948-.737-1.182C10.232 4.032 10.076 4 10 4zm3.971 5c-.089-1.546-.383-2.97-.837-4.118A6.004 6.004 0 0115.917 9h-1.946zm-2.003 2H8.032c.093 1.414.377 2.649.766 3.556.24.56.5.948.737 1.182.233.23.389.262.465.262.076 0 .232-.032.465-.262.238-.234.498-.623.737-1.182.389-.907.673-2.142.766-3.556zm1.166 4.118c.454-1.148.748-2.572.837-4.118h1.946a6.004 6.004 0 01-2.783 4.118zm-6.268 0C6.412 13.97 6.118 12.546 6.03 11H4.083a6.004 6.004 0 002.783 4.118z' clipRule='evenodd' />
-                    </svg>
-                  </div>
-                  <div>
-                    <p className='text-gray-300 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-b hover:from-[#F53A7A] hover:to-[#190CD2] transition-all duration-300 text-base font-normal cursor-pointer'>
-                      www.nextdigital.ae
-                    </p>
-                  </div>
-                </div> */}
               </div>
             </div>
           </div>

@@ -5,29 +5,29 @@ import { ChevronDown } from 'lucide-react';
 
 const faqs = [
   {
-    question: 'What services does your company provide?',
+    question: 'What services does Next Digital offer?',
     answer:
-      'We offer end-to-end digital solutions including web development, mobile app development, UI/UX design, and digital marketing tailored to meet your business needs.',
+      'We provide a full range of digital solutions, including branding, creative design, digital marketing, and strategic consulting. Our goal is to help businesses connect with their audiences, elevate their brand presence, and achieve measurable results.',
   },
   {
-    question: 'How can I request a project quote?',
+    question: 'Who can benefit from working with Next Digital?',
     answer:
-      'You can reach out through our Contact page by filling in your project details, or email us directly. Our team will get back to you with a detailed proposal.',
+      'Whether you’re a startup aiming to establish your identity or an established business looking to evolve and expand, we craft strategies tailored to your goals.',
   },
   {
-    question: 'Do you work with startups as well as large companies?',
+    question: 'What makes Next Digital different from other digital agencies?',
     answer:
-      'Yes, we collaborate with businesses of all sizes — from startups to enterprises — and customize solutions based on their unique requirements.',
+      'We blend creativity with technology and strategy. Our focus isn’t just on making things look great — it’s on delivering impactful solutions that engage audiences, drive growth, and inspire long-term success.',
   },
   {
-    question: 'What is your typical project timeline?',
+    question: 'Do you only work with companies in certain industries?',
     answer:
-      'Project timelines vary depending on the scope and complexity. On average, small projects may take 2–4 weeks, while larger projects can range from 2–3 months.',
+      'Not at all. Our expertise spans across industries. From retail to tech, healthcare to lifestyle brands, we adapt our strategies to suit your unique market and audience.',
   },
   {
-    question: 'How do you provide support after project delivery?',
+    question: 'How does Next Digital approach a new project?',
     answer:
-      'We offer ongoing support and maintenance packages to ensure your product runs smoothly, stays updated, and continues to perform optimally.',
+      'We start by understanding your brand, goals, and challenges. Then, we develop a customized strategy that combines creative design, data-driven insights, and digital marketing techniques to deliver the best results.',
   },
 ];
 

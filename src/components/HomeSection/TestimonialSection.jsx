@@ -7,22 +7,22 @@ import { Navigation, Autoplay } from 'swiper/modules';
 
 const testimonials = [
   {
-    name: 'Emily Carter',
-    role: 'CEO, BrightTech Solutions',
+    name: 'GCC Business Watch',
+    url: 'https://gccbusinesswatch.com/',
     feedback:
-      'Working with your team was seamless and efficient. The project was delivered on time and exceeded our expectations.',
+      'Working with Next Media has been an outstanding experience. Their expertise in digital strategy and content creation helped us enhance our online visibility and connect with a wider audience across the GCC. The team is highly professional, responsive, and committed to delivering quality results.',
   },
   {
-    name: 'David Kim',
-    role: 'Marketing Head, Nova Agency',
+    name: 'Invest First',
+    url: 'https://investfirst.ae/',
     feedback:
-      'Your professionalism and creativity helped us boost our brand presence. We’re extremely satisfied with the results.',
+      'Next Media played a vital role in strengthening our brand presence. From creative campaigns to social media management, they delivered impactful solutions tailored to our business goals. We truly value their dedication and innovative approach.',
   },
   {
-    name: 'Sarah Johnson',
-    role: 'HR Manager, GlobalCorp',
+    name: 'ASCENTAM',
+    url: 'https://globalcorp.com',
     feedback:
-      'A reliable partner who truly understands client needs. Communication was smooth, and the support was top-notch.',
+      'Next Media has been a reliable partner in our growth journey. Their ability to combine creativity with strategy has helped us showcase our services effectively and build strong engagement with our target market. A team you can always count on.',
   },
 ];
 
@@ -52,7 +52,14 @@ export default function TestimonialSection() {
                   “{t.feedback}”
                 </p>
                 <h4 className="font-semibold text-lg">{t.name}</h4>
-                <span className="text-sm">{t.role}</span>
+                <a
+                  href={t.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-white hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-b hover:from-[#F53A7A] hover:to-[#190CD2] transition-all duration-300"
+                >
+                  {t.url}
+                </a>
               </div>
             </SwiperSlide>
           ))}

@@ -5,7 +5,7 @@ import { useRef, useEffect, useState } from 'react';
 const ClientSections = () => {
   // Sample client data
   const clients = [
-    { id: 1, name: 'wide-range', logo: '/images/our-clients/wide-range.jpg' },
+    { id: 1, name: 'wide-range', logo: '/images/our-clients/wide_range1.png' },
     {
       id: 2,
       name: 'kozhicode restaurant',
@@ -14,17 +14,36 @@ const ClientSections = () => {
     {
       id: 3,
       name: 'shay al karam.',
-      logo: '/images/our-clients/shay al karam.png',
+      logo: '/images/our-clients/shay_al_karam1.png',
     },
-    { id: 4, name: 'emirates', logo: '/images/our-clients/emirates.png' },
-    { id: 5, name: 'OIP', logo: '/images/our-clients/OIP.png' },
+    { id: 4, name: 'emirates', logo: '/images/our-clients/emirates1.png' },
+    { id: 5, name: 'OIP', logo: '/images/our-clients/OIP1.png' },
     {
       id: 6,
       name: 'FaceASCENTAM_LOGO_black-DGCKZOSibook',
       logo: '/images/our-clients/ASCENTAM_LOGO_black-DGCKZOSi.png',
     },
-    { id: 7, name: 'wide-range', logo: '/images/our-clients/wide-range.jpg' },
-    { id: 8, name: 'wide-range', logo: '/images/our-clients/wide-range.jpg' },
+    { id: 7, name: 'smash', logo: '/images/our-clients/smash.png' },
+    {
+      id: 8,
+      name: 'adams-aurum',
+      logo: '/images/our-clients/adams aurum .png',
+    },
+    { id: 9, name: 'ewf', logo: '/images/our-clients/EWF.png' },
+    { id: 10, name: 'noora', logo: '/images/our-clients/NOORA.png' },
+    {
+      id: 11,
+      name: 'AL ADEED BUSINESS GROUP ',
+      logo: '/images/our-clients/AL-ADEED-BUSINESS-GROUP.png',
+    },
+    {
+      id: 11,
+      name: 'IF Logo_Artboard  ',
+      logo: '/images/our-clients/IF-Logo_Artboard.png',
+    },
+    { id: 12, name: 'B&B', logo: '/images/our-clients/B&B.png' },
+    { id: 13, name: 'Befirst', logo: '/images/our-clients/Befirst.png' },
+    { id: 14, name: 'Befirst-hr', logo: '/images/our-clients/Befirst-hr.png' },
   ];
 
   const duplicatedClients = [...clients, ...clients];
@@ -62,7 +81,7 @@ const ClientSections = () => {
 
         {/* First Carousel (Right to Left) */}
         <div className="relative w-full overflow-hidden mb-8 md:mb-10 lg:mb-12">
-          <div className="infinite-scroll flex">
+          <div className="infinite-scroll flex bg-gray-100/50">
             {duplicatedClients.map((client, index) => (
               <div
                 key={`first-${client.id}-${index}`}
@@ -86,7 +105,7 @@ const ClientSections = () => {
 
         {/* Second Carousel (Left to Right) */}
         <div className="relative w-full overflow-hidden">
-          <div className="infinite-scroll-reverse flex">
+          <div className="infinite-scroll-reverse flex bg-gray-100/50">
             {duplicatedClients.map((client, index) => (
               <div
                 key={`second-${client.id}-${index}`}

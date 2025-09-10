@@ -75,6 +75,7 @@ const ServiceSection = () => {
   const [activeIndex, setActiveIndex] = useState(1);
   const [isMobile, setIsMobile] = useState(false);
   const [isLgScreen, setIsLgScreen] = useState(false);
+  const [isXlScreen, setIsXlScreen] = useState(false);
   const controls = useAnimation();
   const containerRef = useRef(null);
   const intervalRef = useRef();
@@ -84,7 +85,9 @@ const ServiceSection = () => {
     const checkScreenSize = () => {
       const width = window.innerWidth;
       setIsMobile(width < 1024); // lg breakpoint
-      setIsLgScreen(width >= 1280); // xl breakpoint for extra large spacing
+      setIsLgScreen(width >= 1280 && width < 1536);
+      setIsXlScreen(width >= 1536); // 2xl and above
+      // xl breakpoint for extra large spacing
     };
 
     checkScreenSize();
@@ -284,7 +287,7 @@ const ServiceSection = () => {
               return (
                 <motion.div
                   key={service.id}
-                  className={`absolute ${isMobile ? 'w-72' : isLgScreen ? 'w-96' : 'w-96'} h-[26rem] md:h-[28rem] p-6 md:p-8 rounded-3xl shadow-2xl cursor-pointer ${
+                  className={`absolute ${isMobile ? 'w-72' : isLgScreen ? 'w-80' : isXlScreen && 'w-96'} h-[26rem] md:h-[28rem] p-6 md:p-8 rounded-3xl shadow-2xl cursor-pointer ${
                     position === 'center'
                       ? 'bg-black/60'
                       : 'bg-gray-800/90 backdrop-blur-sm'
@@ -299,7 +302,7 @@ const ServiceSection = () => {
                   exit="hidden"
                   onClick={() => selectCard(service.id)}
                   whileHover={
-                    !isMobile
+                    +!isMobile
                       ? { scale: position === 'center' ? 1.05 : 1.02 }
                       : {}
                   }

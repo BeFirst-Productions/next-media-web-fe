@@ -157,7 +157,7 @@ const AboutSection = () => {
       className="relative py-28 container-custom w-full text-white overflow-hidden xl:mt-20"
     >
       {/* Right Side Background Image */}
-      <motion.div
+      {/* <motion.div
         variants={bgVariants}
         initial="hidden"
         animate={bgControls}
@@ -183,7 +183,7 @@ const AboutSection = () => {
             }}
           />
         </motion.div>
-      </motion.div>
+      </motion.div> */}
 
       <motion.div
         variants={slideInVariants}
@@ -251,7 +251,7 @@ const AboutSection = () => {
         </motion.div>
 
         {/* Increased gap between cards from gap-8 to gap-16 */}
-        <div className="w-full   mx-auto grid grid-cols-1 lg:grid-cols-2 gap-4 xl:gap-10 2xl:gap-48">
+        <div className=" max-w-4xl 2xl:max-w-7xl  mx-auto grid grid-cols-1 lg:grid-cols-2 gap-4 xl:gap-36 2xl:gap-48">
           <motion.div
             variants={slideInVariants}
             initial="hidden"
@@ -266,7 +266,7 @@ const AboutSection = () => {
             <h3 className="text-3xl font-bold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
               About Us
             </h3>
-            <div className="space-y-6 text-base md:text-lg">
+            <div className="space-y-6 text-base 2xl:text-lg">
               <p>
                 At Next Digital, we believe in the power of creativity and
                 strategy to transform brands and elevate businesses. We are a
@@ -302,7 +302,7 @@ const AboutSection = () => {
               <h3 className="text-3xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">
                 Our Mission
               </h3>
-              <p className="text-base md:text-lg leading-relaxed">
+              <p className="text-base 2xl:text-lg leading-relaxed">
                 To deliver innovative, data-driven marketing solutions that
                 empower businesses to grow, engage their audience, and achieve
                 measurable success.

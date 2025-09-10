@@ -11,7 +11,7 @@ export default function project() {
   return (
     <>
       <Navbar />
-      <PremiumVideoBanner BannerTitle={'Our Projects'} />
+      {/* <PremiumVideoBanner BannerTitle={'Our Projects'} /> */}
       {/* <ProjectsPageTitle /> */}
       <ProjectsSection />
       <Footer />

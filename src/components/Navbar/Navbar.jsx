@@ -61,10 +61,25 @@ const Navbar = () => {
   const isContactPage = pathname === '/contact';
   const isServicePage = pathname === '/services';
   const isAboutUsPage = pathname === '/aboutus';
+  const isGalleryPage = pathname === '/gallery';
+  const [scrolled, setScrolled] = useState(false);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 0);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
   return (
     <>
-      <nav className="fixed w-full h-24  container-custom z-40 bg-black">
+      <nav
+        className={`fixed w-full h-24 container-custom z-40 transition-colors duration-300 ${
+          scrolled ? 'bg-black' : 'bg-transparent'
+        }`}
+      >
+        {' '}
         <div className="h-full w-full  flex items-center justify-between">
           {/* Logo - forced to left */}
           <div className="flex-shrink-0   ">
@@ -106,10 +121,10 @@ const Navbar = () => {
               Clients
             </Link> */}
             <Link
-              href="/projects"
-              className="text-white hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-b hover:from-[#F53A7A] hover:to-[#190CD2] transition-all duration-300"
+              href="/gallery"
+              className={`${isGalleryPage ? 'text-transparent bg-clip-text bg-gradient-to-b from-[#F53A7A] to-[#190CD2]' : 'text-white'} hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-b hover:from-[#F53A7A] hover:to-[#190CD2] transition-all duration-300`}
             >
-              Projects
+              Our Gallery{' '}
             </Link>
             <Link
               href="/contact"
@@ -159,7 +174,7 @@ const Navbar = () => {
 
       {/* Mobile Sidebar with higher z-index */}
       <div
-        className={`fixed top-0 right-0 z-50 h-full bg-gray-900/95 backdrop-blur-md lg:w-2/5 xl:w-1/5 md:w-1/2 w-full flex flex-col transform transition-all duration-500 ease-out overflow-hidden ${
+        className={`fixed top-0 right-0 z-50 h-full bg-gray-900/95 backdrop-blur-md lg:w-2/5 xl:w-1/3 2xl:w-1/4 md:w-1/2 w-full flex flex-col transform transition-all duration-500 ease-out overflow-hidden ${
           isSidebarOpen
             ? 'translate-x-0 opacity-100'
             : 'translate-x-full opacity-0'
@@ -244,11 +259,11 @@ const Navbar = () => {
                 </li>
                 <li className="md:hidden">
                   <Link
-                    href="/projects"
+                    href="/gallery"
                     className="block py-2 text-white hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-b hover:from-[#F53A7A] hover:to-[#190CD2] transition-all duration-300"
                     onClick={toggleSidebar}
                   >
-                    Projects
+                    Our Gallery
                   </Link>
                 </li>
                 <li className="md:hidden">
@@ -271,11 +286,11 @@ const Navbar = () => {
                 </li> */}
                 <li>
                   <Link
-                    href="/gallery"
+                    href="/projects"
                     className="block py-2 text-white hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-b hover:from-[#F53A7A] hover:to-[#190CD2] transition-all duration-300"
                     onClick={toggleSidebar}
                   >
-                    Our Gallery
+                    Projects
                   </Link>
                 </li>
               </ul>
@@ -286,7 +301,7 @@ const Navbar = () => {
             <div className="flex space-x-6 pl-4 p-6 md:p-4">
               {/* Facebook */}
               <a
-                href="https://facebook.com"
+                href="https://www.facebook.com/nextdms"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white hover:text-pink-500 transition-all duration-300"
@@ -335,12 +350,20 @@ const Navbar = () => {
                 {/* Phone with link */}
                 <div className="flex items-center">
                   <Phone className="w-5 h-5 mr-3 text-pink-500" />
-                  <a
-                    href="tel:+971525162071"
-                    className="hover:text-pink-500 transition-colors duration-300"
-                  >
-                    +971 52 516 2071, +971564712381
-                  </a>
+                  <div className="flex flex-col sm:flex-row ">
+                    <a
+                      href="tel:+971588984455"
+                      className="hover:text-pink-500 transition-colors duration-300"
+                    >
+                      +971 58 898 4455,
+                    </a>
+                    <a
+                      href="tel:+971525162071"
+                      className="hover:text-pink-500 transition-colors duration-300"
+                    >
+                      +971 52 516 2071
+                    </a>
+                  </div>
                 </div>
 
                 {/* Email with link */}
