@@ -80,44 +80,32 @@ const ServiceSection = () => {
   const containerRef = useRef(null);
   const intervalRef = useRef();
 
-  // Check screen size on mount and resize
+  // Screen size
   useEffect(() => {
     const checkScreenSize = () => {
       const width = window.innerWidth;
-      setIsMobile(width < 1024); // lg breakpoint
+      setIsMobile(width < 1024);
       setIsLgScreen(width >= 1280 && width < 1536);
-      setIsXlScreen(width >= 1536); // 2xl and above
-      // xl breakpoint for extra large spacing
+      setIsXlScreen(width >= 1536);
     };
 
     checkScreenSize();
     window.addEventListener('resize', checkScreenSize);
-
-    return () => {
-      window.removeEventListener('resize', checkScreenSize);
-    };
+    return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
 
-  // Auto-rotate cards - different behavior for mobile/desktop
+  // Auto-rotate
   useEffect(() => {
-    if (isMobile) {
-      // For mobile: simple auto-advance
-      intervalRef.current = setInterval(() => {
-        setActiveIndex((prev) => (prev % services.length) + 1);
-      }, 4000);
-    } else {
-      // For desktop: 3-card carousel
-      intervalRef.current = setInterval(() => {
-        setActiveIndex((prev) => (prev % services.length) + 1);
-      }, 4000);
-    }
+    intervalRef.current = setInterval(() => {
+      setActiveIndex((prev) => (prev % services.length) + 1);
+    }, 4000);
 
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
   }, [isMobile]);
 
-  // Handle manual selection
+  // Manual select
   const selectCard = (id) => {
     setActiveIndex(id);
     if (intervalRef.current) clearInterval(intervalRef.current);
@@ -126,25 +114,17 @@ const ServiceSection = () => {
     }, 4000);
   };
 
-  // Determine card positions - updated for better 3-card layout
+  // Position
   const getCardPosition = (index) => {
-    if (isMobile) {
-      // Mobile: only show the active card
-      return index === activeIndex ? 'center' : 'hidden';
-    }
+    if (isMobile) return index === activeIndex ? 'center' : 'hidden';
 
-    // Desktop: show exactly 3 cards (left, center, right)
     const activeServiceIndex = services.findIndex((s) => s.id === activeIndex);
     const serviceIndex = services.findIndex((s) => s.id === index);
-
-    // Calculate the relative position in a circular manner
     let relativePos = serviceIndex - activeServiceIndex;
 
-    // Handle circular wrapping
     if (relativePos < -services.length / 2) relativePos += services.length;
     if (relativePos > services.length / 2) relativePos -= services.length;
 
-    // Only show the center card and its immediate neighbors
     if (relativePos === 0) return 'center';
     if (relativePos === -1 || relativePos === services.length - 1)
       return 'left';
@@ -154,14 +134,12 @@ const ServiceSection = () => {
     return 'hidden';
   };
 
-  // Dynamic card variants based on screen size
+  // Variants
   const getCardVariants = () => {
-    // For XL screens and above, use larger spacing
     if (isLgScreen) {
       return {
         left: {
           x: '-120%',
-          y: 0,
           scale: 0.85,
           opacity: 0.8,
           zIndex: 2,
@@ -174,7 +152,6 @@ const ServiceSection = () => {
         },
         center: {
           x: '0%',
-          y: 0,
           scale: 1,
           opacity: 1,
           zIndex: 3,
@@ -187,7 +164,6 @@ const ServiceSection = () => {
         },
         right: {
           x: '120%',
-          y: 0,
           scale: 0.85,
           opacity: 0.8,
           zIndex: 2,
@@ -200,7 +176,6 @@ const ServiceSection = () => {
         },
         hidden: {
           x: '0%',
-          y: 0,
           scale: 0.7,
           opacity: 0,
           zIndex: 1,
@@ -208,12 +183,9 @@ const ServiceSection = () => {
         },
       };
     }
-
-    // For regular desktop screens (1024px to 1279px), use smaller spacing
     return {
       left: {
         x: '-105%',
-        y: 0,
         scale: 0.85,
         opacity: 0.8,
         zIndex: 2,
@@ -226,7 +198,6 @@ const ServiceSection = () => {
       },
       center: {
         x: '0%',
-        y: 0,
         scale: 1,
         opacity: 1,
         zIndex: 3,
@@ -239,7 +210,6 @@ const ServiceSection = () => {
       },
       right: {
         x: '105%',
-        y: 0,
         scale: 0.85,
         opacity: 0.8,
         zIndex: 2,
@@ -252,7 +222,6 @@ const ServiceSection = () => {
       },
       hidden: {
         x: '0%',
-        y: 0,
         scale: 0.7,
         opacity: 0,
         zIndex: 1,
@@ -263,9 +232,9 @@ const ServiceSection = () => {
 
   return (
     <section className="py-16 container-custom">
-      <div className="w-full ">
+      <div className="w-full">
         <motion.h2
-          className="text-3xl md:text-4xl lg:text-5xl font-bold text-center  text-white"
+          className="text-3xl md:text-4xl lg:text-5xl font-bold text-center text-white"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -274,7 +243,7 @@ const ServiceSection = () => {
           Our Services
         </motion.h2>
 
-        {/* Responsive container with different widths */}
+        {/* Cards */}
         <div
           className={`relative ${isMobile ? 'h-[32rem]' : 'h-[40rem]'} w-full ${isMobile ? 'max-w-md' : isLgScreen ? 'max-w-6xl' : 'max-w-4xl'} mx-auto flex justify-center items-center overflow-visible`}
           ref={containerRef}
@@ -292,17 +261,14 @@ const ServiceSection = () => {
                       ? 'bg-black/60'
                       : 'bg-gray-800/90 backdrop-blur-sm'
                   } [@media(min-width:1440px)_and_(max-width:1535px)]:w-72 [@media(min-width:1024px)_and_(max-width:1200px)]:w-72`}
-                  style={{
-                    originX: 0.5,
-                    originY: 0.5,
-                  }}
+                  style={{ originX: 0.5, originY: 0.5 }}
                   variants={getCardVariants()}
                   animate={position}
                   initial="hidden"
                   exit="hidden"
                   onClick={() => selectCard(service.id)}
                   whileHover={
-                    +!isMobile
+                    !isMobile
                       ? { scale: position === 'center' ? 1.05 : 1.02 }
                       : {}
                   }
@@ -318,13 +284,10 @@ const ServiceSection = () => {
                       />
                     </div>
                     <h3
-                      className={`text-xl md:text-2xl font-bold mb-4 md:mb-6 text-center ${
-                        position === 'center' ? 'text-white' : 'text-gray-300'
-                      }`}
+                      className={`text-xl md:text-2xl font-bold mb-4 md:mb-6 text-center ${position === 'center' ? 'text-white' : 'text-gray-300'}`}
                     >
                       {service.title}
                     </h3>
-
                     <ul className="w-full space-y-2 md:space-y-3 px-2 md:px-4">
                       {service.services.map((item, i) => (
                         <li
@@ -345,7 +308,7 @@ const ServiceSection = () => {
           </AnimatePresence>
         </div>
 
-        {/* Dots indicator with reduced margin */}
+        {/* Dots */}
         <div className="flex justify-center mt-6 space-x-2 md:space-x-3">
           {services.map((service) => (
             <button
