@@ -34,36 +34,41 @@ const faqs = [
 export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState(null);
 
-  const toggleFAQ = (index) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
-
   return (
-    <section className="py-16 container-custom " id="faq">
+    <section className="py-16 container-custom" id="faq">
       <div className="max-w-7xl mx-auto px-6">
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-10 ">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-10">
           Frequently Asked Questions
         </h2>
         <div className="space-y-4">
-          {faqs.map((faq, index) => (
-            <div
-              key={index}
-              className="bg-black/50 shadow-md rounded-2xl p-4 transition-all duration-300"
-            >
-              <button
-                onClick={() => toggleFAQ(index)}
-                className="w-full flex justify-between items-center text-left"
+          {faqs.map((faq, index) => {
+            const isOpen = openIndex === index;
+            return (
+              <div
+                key={index}
+                className="bg-black/50 shadow-md rounded-2xl p-4 transition-all duration-300"
+                onMouseEnter={() => setOpenIndex(index)}
+                onMouseLeave={() => setOpenIndex(null)}
               >
-                <span className="text-lg font-medium ">{faq.question}</span>
-                <ChevronDown
-                  className={`w-5 h-5 transform transition-transform duration-300 ${
-                    openIndex === index ? 'rotate-180' : ''
+                <div className="w-full flex justify-between items-center text-left">
+                  <span className="text-lg font-medium">{faq.question}</span>
+                  <ChevronDown
+                    className={`w-5 h-5 transform transition-transform duration-300 ${
+                      isOpen ? 'rotate-180' : ''
+                    }`}
+                  />
+                </div>
+
+                <div
+                  className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                    isOpen ? 'max-h-40 opacity-100 mt-3' : 'max-h-0 opacity-0'
                   }`}
-                />
-              </button>
-              {openIndex === index && <p className="mt-3 ">{faq.answer}</p>}
-            </div>
-          ))}
+                >
+                  <p>{faq.answer}</p>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

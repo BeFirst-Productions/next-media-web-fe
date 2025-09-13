@@ -386,7 +386,7 @@ export default function ContactPage() {
                     <div className="ml-4">
                       <h3 className="text-lg font-medium">Phone</h3>
                       <p className="mt-1  text-base">
-                        +971 52 516 2071, +971564712381
+                        +971 58 898 4455, +971 52 516 2071
                       </p>
                     </div>
                   </div>
@@ -410,6 +410,7 @@ export default function ContactPage() {
                     </div>
                     <div className="ml-4">
                       <h3 className="text-lg font-medium">Email</h3>
+                      <p className="mt-1  text-base">info.nextdms@gmail.com</p>
                       <p className="mt-1  text-base">info.nextdms@gmail.com</p>
                     </div>
                   </div>

@@ -20,7 +20,7 @@ const testimonials = [
   },
   {
     name: 'ASCENTAM',
-    url: 'https://globalcorp.com',
+    url: 'https://ascentam.com/',
     feedback:
       'Next Media has been a reliable partner in our growth journey. Their ability to combine creativity with strategy has helped us showcase our services effectively and build strong engagement with our target market. A team you can always count on.',
   },
@@ -40,7 +40,7 @@ export default function TestimonialSection() {
             nextEl: '.swiper-button-next-custom',
             prevEl: '.swiper-button-prev-custom',
           }}
-          autoplay={{ delay: 4000 }}
+          autoplay={{ delay: 3000 }}
           loop={true}
           modules={[Navigation, Autoplay]}
           className="pb-12 relative"

@@ -1,4 +1,4 @@
-import nodemailer from "nodemailer";
+import nodemailer from 'nodemailer';
 
 export async function POST(req) {
   try {
@@ -6,14 +6,14 @@ export async function POST(req) {
     const { firstName, lastName, email, message, service, serviceOther } = body;
 
     // Determine actual service text
-    const serviceText = service === "Others" ? serviceOther : service;
+    const serviceText = service === 'Others' ? serviceOther : service;
 
     // Setup email transporter
     const transporter = nodemailer.createTransport({
-      service: "gmail",
+      service: 'gmail',
       auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS, // Consider using environment variable instead
+        user: 'dasarathbefirstcalicut@gmail.com',
+        pass: 'zpne rgnc syrz eatj', // Consider using environment variable instead
       },
     });
 
@@ -69,7 +69,7 @@ export async function POST(req) {
     const mailOptions = {
       from: email, // Show user's email in "from"
       to: process.env.EMAIL_USER,
-      subject: "📩 New Website Contact Form Submission",
+      subject: '📩 New Website Contact Form Submission',
       html: htmlTemplate,
     };
 
@@ -77,7 +77,10 @@ export async function POST(req) {
 
     return new Response(JSON.stringify({ success: true }), { status: 200 });
   } catch (error) {
-    console.error("Email send error:", error);
-    return new Response(JSON.stringify({ success: false, error: error.message }), { status: 500 });
+    console.error('Email send error:', error);
+    return new Response(
+      JSON.stringify({ success: false, error: error.message }),
+      { status: 500 }
+    );
   }
 }

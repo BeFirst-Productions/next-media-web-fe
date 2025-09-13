@@ -43,8 +43,8 @@ export default function Home() {
       <ImageTextSection />
       <ValuesSection />
       <FAQSection />
-      <TestimonialSection />
       <ClientSections />
+      <TestimonialSection />
       <NewsletterSubscription />
       <Footer />
       <ScrollToTop />

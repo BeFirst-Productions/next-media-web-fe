@@ -25,17 +25,32 @@ const ImageTextSection = () => {
           {/* Left side - Falling image */}
           <motion.div
             className="w-full lg:w-3/5 xl:w-2/5 -ml-0 flex justify-center"
-            initial={{ opacity: 0, x: -100 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
-            viewport={{ once: true }}
+            animate={{
+              x: isHovering ? 120 : 0,
+              y: isHovering ? 140 : [0, -10, 0, 8, 0], // floating effect when idle
+              rotate: isHovering ? 15 : [0, 1, -1, 0], // subtle tilt when idle
+            }}
+            transition={{
+              type: isHovering ? 'spring' : 'tween',
+              stiffness: isHovering ? 80 : undefined,
+              damping: isHovering ? 12 : undefined,
+              duration: isHovering ? undefined : 6, // smooth idle animation
+              repeat: isHovering ? 0 : Infinity, // keep looping idle motion
+              ease: 'easeInOut',
+            }}
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 1.02 }}
+            onHoverStart={() => setIsHovering(true)}
+            onHoverEnd={() => setIsHovering(false)}
+            onTouchStart={() => setIsHovering(true)}
+            onTouchEnd={() => setIsHovering(false)}
           >
             <motion.div
-              className="relative w-full max-w-md md:max-w-lg lg:max-w-none xl:max-w-full h-80 sm:h-96 md:h-[450px] lg:h-[400px] 2xl:h-[500px] rounded-3xl overflow-hidden cursor-pointer origin-top-left will-change-transform"
+              className="relative w-full max-w-md  md:max-w-lg lg:max-w-none xl:max-w-full h-80 sm:h-96 md:h-[450px] lg:h-[400px] 2xl:h-[500px] rounded-3xl overflow-hidden cursor-pointer origin-top-left will-change-transform"
               animate={{
-                x: isHovering ? 120 : 0, // slide right
-                y: isHovering ? 140 : 0, // slide down
-                rotate: isHovering ? 15 : 0, // tilt to the right
+                x: isHovering ? 10 : 0, // slide right
+                y: isHovering ? 10 : 0, // slide down
+                rotate: isHovering ? 10 : 0, // tilt to the right
               }}
               transition={{
                 type: 'spring',

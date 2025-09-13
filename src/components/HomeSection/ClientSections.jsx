@@ -72,7 +72,7 @@ const ClientSections = () => {
   }, []);
 
   return (
-    <section className="py-8 md:py-12 lg:py-16 overflow-hidden container-custom">
+    <section className="py-8 md:py-12 lg:py-16 overflow-hidden ">
       <div className="w-full mx-auto">
         <div className="text-center mb-8 md:mb-10 lg:mb-12">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
@@ -82,14 +82,14 @@ const ClientSections = () => {
 
         {/* First Carousel (Right to Left) */}
         <div className="relative w-full overflow-hidden mb-8 md:mb-10 lg:mb-12">
-          <div className="infinite-scroll flex bg-gray-100/50">
+          <div className="infinite-scroll flex bg-white/20">
             {duplicatedClients.map((client, index) => (
               <div
                 key={`first-${client.id}-${index}`}
                 className="flex-shrink-0 px-2 sm:px-3 md:px-4 lg:px-6 xl:px-8"
                 style={{ width: `${itemWidth}px` }}
               >
-                <div className="rounded-lg md:rounded-xl p-3 sm:p-4 md:p-5 lg:p-6 flex items-center justify-center h-20 sm:h-24 md:h-32 lg:h-40 xl:h-48 group">
+                <div className="rounded-lg md:rounded-xl p-3 sm:p-4 md:p-5 lg:p-6 flex items-center justify-center h-28 sm:h-24 md:h-32 lg:h-40 xl:40 2xl:h-56 group">
                   <div className="relative w-full h-full">
                     <Image
                       src={client.logo}
@@ -106,14 +106,14 @@ const ClientSections = () => {
 
         {/* Second Carousel (Left to Right) */}
         <div className="relative w-full overflow-hidden">
-          <div className="infinite-scroll-reverse flex bg-gray-100/50">
+          <div className="infinite-scroll-reverse flex bg-white/20">
             {duplicatedClients.map((client, index) => (
               <div
                 key={`second-${client.id}-${index}`}
                 className="flex-shrink-0 px-2 sm:px-3 md:px-4 lg:px-6 xl:px-8"
                 style={{ width: `${itemWidth}px` }}
               >
-                <div className="rounded-lg md:rounded-xl p-3 sm:p-4 md:p-5 lg:p-6 flex items-center justify-center h-20 sm:h-24 md:h-32 lg:h-40 xl:h-48 group">
+                <div className="rounded-lg md:rounded-xl p-3 sm:p-4 md:p-5 lg:p-6 flex items-center justify-center h-28 sm:h-40 md:h-32 lg:h-40 xl:40 2xl:h-56  group">
                   <div className="relative w-full h-full">
                     <Image
                       src={client.logo}

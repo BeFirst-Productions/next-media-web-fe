@@ -98,7 +98,7 @@ const ServiceSection = () => {
   useEffect(() => {
     intervalRef.current = setInterval(() => {
       setActiveIndex((prev) => (prev % services.length) + 1);
-    }, 4000);
+    }, 2000);
 
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
@@ -111,7 +111,7 @@ const ServiceSection = () => {
     if (intervalRef.current) clearInterval(intervalRef.current);
     intervalRef.current = setInterval(() => {
       setActiveIndex((prev) => (prev % services.length) + 1);
-    }, 4000);
+    }, 2000);
   };
 
   // Position
@@ -146,7 +146,7 @@ const ServiceSection = () => {
           transition: {
             type: 'spring',
             stiffness: 300,
-            damping: 20,
+            damping: 18,
             duration: 0.5,
           },
         },
@@ -158,8 +158,8 @@ const ServiceSection = () => {
           transition: {
             type: 'spring',
             stiffness: 300,
-            damping: 20,
-            duration: 0.5,
+            damping: 18,
+            duration: 0.3,
           },
         },
         right: {
@@ -170,8 +170,8 @@ const ServiceSection = () => {
           transition: {
             type: 'spring',
             stiffness: 300,
-            damping: 20,
-            duration: 0.5,
+            damping: 18,
+            duration: 0.3,
           },
         },
         hidden: {
@@ -192,8 +192,8 @@ const ServiceSection = () => {
         transition: {
           type: 'spring',
           stiffness: 300,
-          damping: 20,
-          duration: 0.5,
+          damping: 18,
+          duration: 0.3,
         },
       },
       center: {
@@ -204,8 +204,8 @@ const ServiceSection = () => {
         transition: {
           type: 'spring',
           stiffness: 300,
-          damping: 20,
-          duration: 0.5,
+          damping: 18,
+          duration: 0.3,
         },
       },
       right: {
@@ -216,8 +216,8 @@ const ServiceSection = () => {
         transition: {
           type: 'spring',
           stiffness: 300,
-          damping: 20,
-          duration: 0.5,
+          damping: 18,
+          duration: 0.3,
         },
       },
       hidden: {

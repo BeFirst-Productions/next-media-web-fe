@@ -154,7 +154,7 @@ const AboutSection = () => {
   return (
     <section
       ref={ref}
-      className="relative py-28 container-custom w-full text-white overflow-hidden xl:mt-20"
+      className="relative  container-custom w-full text-white overflow-hidden xl:mt-20"
     >
       {/* Right Side Background Image */}
       {/* <motion.div

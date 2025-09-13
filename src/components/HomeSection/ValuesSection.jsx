@@ -1,18 +1,8 @@
 'use client';
-import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 
 const ValuesSection = () => {
-  const [is2xl, setIs2xl] = useState(false);
-
-  useEffect(() => {
-    const checkScreen = () => setIs2xl(window.innerWidth >= 1536); // Tailwind 2xl breakpoint
-    checkScreen();
-    window.addEventListener('resize', checkScreen);
-    return () => window.removeEventListener('resize', checkScreen);
-  }, []);
-
   const values = [
     {
       title: 'Innovation',
@@ -42,8 +32,30 @@ const ValuesSection = () => {
     },
   ];
 
+  const cardVariants = {
+    hidden: { opacity: 0, y: 40 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: 'easeOut' },
+    },
+    hover: {
+      scale: 1.05,
+      borderColor: 'rgba(59,130,246,0.8)',
+      transition: { duration: 0.3, ease: 'easeOut' },
+    },
+    tap: { scale: 0.97 },
+  };
+
+  const iconVariants = {
+    float: {
+      y: [0, -6, 0],
+      transition: { repeat: Infinity, duration: 4, ease: 'easeInOut' },
+    },
+  };
+
   return (
-    <section className="relative py-16 overflow-hidden container-custom">
+    <section className="relative py-16 overflow-hidden">
       {/* Heading */}
       <div className="relative mb-16 text-center">
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold z-10">
@@ -51,71 +63,50 @@ const ValuesSection = () => {
         </h2>
       </div>
 
-      {/* Values Display */}
-      {is2xl ? (
-        // Static row for 2XL screens
-        <div className="grid grid-cols-5 gap-6 w-full">
-          {values.map((value, index) => (
-            <div
+      {/* Infinite Carousel */}
+      <div className="relative w-full overflow-hidden">
+        <motion.div
+          className="flex gap-6 w-max"
+          animate={{ x: ['0%', '-50%'] }} // move half since we duplicated
+          transition={{
+            duration: 25, // speed of scrolling
+            ease: 'linear',
+            repeat: Infinity,
+          }}
+        >
+          {values.concat(values).map((value, index) => (
+            <motion.div
               key={index}
-              className="bg-gray-800/80 backdrop-blur-md text-white rounded-xl p-6 w-full shadow-lg border border-blue-700/30 transition-all duration-300"
+              variants={cardVariants}
+              initial="hidden"
+              animate="show"
+              whileHover="hover"
+              whileTap="tap"
+              className="bg-gray-800/80 backdrop-blur-md text-white rounded-xl p-6 w-[350px] 2xl:w-[450px] flex-shrink-0 shadow-lg border border-blue-700/30 transition-all duration-300"
             >
-              <div className="relative w-20 h-20 mb-6 mx-auto">
+              <motion.div
+                className="relative w-20 h-20 mb-6 mx-auto"
+                variants={iconVariants}
+                animate="float"
+                transition={{ delay: index * 0.2 }}
+              >
                 <Image
                   src={value.icon}
                   alt={value.title}
                   fill
                   className="object-contain"
                 />
-              </div>
+              </motion.div>
               <h3 className="text-2xl font-semibold mb-3 text-center">
                 {value.title}
               </h3>
               <p className="text-gray-300 text-base text-center">
                 {value.description}
               </p>
-            </div>
+            </motion.div>
           ))}
-        </div>
-      ) : (
-        // Carousel for smaller screens
-        <div className="relative w-full overflow-hidden">
-          <motion.div
-            className="flex gap-6"
-            animate={{ x: ['0%', '-100%'] }}
-            transition={{
-              x: {
-                repeat: Infinity,
-                repeatType: 'loop',
-                duration: 20,
-                ease: 'linear',
-              },
-            }}
-          >
-            {values.concat(values).map((value, index) => (
-              <div
-                key={index}
-                className="bg-gray-800/80 backdrop-blur-md text-white rounded-xl p-6 w-[280px] flex-shrink-0 shadow-lg border border-blue-700/30 hover:border-blue-500/50 transition-all duration-300"
-              >
-                <div className="relative w-20 h-20 mb-6 mx-auto">
-                  <Image
-                    src={value.icon}
-                    alt={value.title}
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-                <h3 className="text-2xl font-semibold mb-3 text-center">
-                  {value.title}
-                </h3>
-                <p className="text-gray-300 text-base text-center">
-                  {value.description}
-                </p>
-              </div>
-            ))}
-          </motion.div>
-        </div>
-      )}
+        </motion.div>
+      </div>
     </section>
   );
 };

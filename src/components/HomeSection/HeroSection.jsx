@@ -75,7 +75,7 @@ const HeroSection = () => {
   );
 
   return (
-    <div className="relative w-full min-h-screen overflow-hidden flex flex-col md:flex-row items-center justify-center lg:justify-between container-custom pt-20 lg:pt-0 ">
+    <div className="relative w-full  min-h-screen overflow-hidden flex flex-col md:flex-row items-center justify-center lg:justify-between container-custom pt-20 lg:pt-0 ">
       {/* Space background */}
       <div className="absolute inset-0 bg-[url('/images/space-bg.jpg')] bg-cover bg-center opacity-20"></div>
 
