@@ -1,7 +1,7 @@
 'use client';
 import { useRef, useEffect, useState } from 'react';
 
-const PremiumVideoBanner = ({BannerTitle}) => {
+const PremiumVideoBanner = ({ BannerTitle }) => {
   const videoRef = useRef(null);
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -10,8 +10,8 @@ const PremiumVideoBanner = ({BannerTitle}) => {
     const timer = setTimeout(() => {
       setIsLoaded(true);
       if (videoRef.current) {
-        videoRef.current.play().catch(error => {
-          console.log("Autoplay prevented:", error);
+        videoRef.current.play().catch((error) => {
+          console.log('Autoplay prevented:', error);
         });
       }
     }, 500);
@@ -19,9 +19,9 @@ const PremiumVideoBanner = ({BannerTitle}) => {
     return () => clearTimeout(timer);
   }, []);
 
-    const HighlightWord = ({ children }) => (
+  const HighlightWord = ({ children }) => (
     <span className=" inline-block">
-      <span 
+      <span
         className="text-transparent"
         style={{
           WebkitTextStroke: '0.5px #fff',
@@ -30,7 +30,7 @@ const PremiumVideoBanner = ({BannerTitle}) => {
         {children}
       </span>
       <span className="absolute inset-0 flex items-center justify-center">
-        <motion.span 
+        <motion.span
           className="block w-2 h-2 rounded-full bg-white"
           animate={{
             scale: [1, 1.8, 1],
@@ -39,7 +39,7 @@ const PremiumVideoBanner = ({BannerTitle}) => {
           transition={{
             duration: 3,
             repeat: Infinity,
-            ease: "easeInOut"
+            ease: 'easeInOut',
           }}
         />
       </span>
@@ -50,7 +50,9 @@ const PremiumVideoBanner = ({BannerTitle}) => {
     <section className="relative h-[400px] flex items-center justify-center overflow-hidden">
       {/* Video Background */}
       <div className="absolute inset-0 z-0">
-        <div className={`absolute inset-0 bg-black transition-opacity duration-1000 ${isLoaded ? 'opacity-40' : 'opacity-15'}`}></div>
+        <div
+          className={`absolute inset-0 bg-black transition-opacity duration-1000 ${isLoaded ? 'opacity-40' : 'opacity-15'}`}
+        ></div>
         <video
           ref={videoRef}
           autoPlay
@@ -61,16 +63,17 @@ const PremiumVideoBanner = ({BannerTitle}) => {
           className="w-full h-full object-cover"
           poster="data:image/gif,AAAA" // Tiny transparent GIF to avoid gray background
         >
-          <source src="/video/space_video.mp4" type="video/mp4" />
+          <source src="/video/Galaxy_Spiral.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
 
       {/* Content Overlay */}
       <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
-        <h1 className={`text-4xl md:text-5xl font-bold pt-12  transform transition-all duration-1000 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+        <h1
+          className={`text-4xl md:text-5xl font-bold pt-12  transform transition-all duration-1000 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
+        >
           {BannerTitle}
-          
         </h1>
         {/* <p className={`text-xl md:text-2xl mb-8 transition-opacity duration-1000 delay-300 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
           Discover the premium quality that sets us apart from the rest

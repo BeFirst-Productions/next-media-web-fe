@@ -11,11 +11,10 @@ export default function BackgroundEffects() {
   const medium2X = useMotionValue(0);
   const medium2Y = useMotionValue(0);
 
-  const bigSize = useMotionValue(700);
-  const medium1Size = useMotionValue(600);
-  const medium2Size = useMotionValue(600);
+  const bigSize = useMotionValue(200);
+  // const medium1Size = useMotionValue(100);
+  const medium2Size = useMotionValue(100);
 
-  // Generate stars on client-side only
   const [stars, setStars] = useState([]);
 
   const animateCircle = (x, y, size, index) => {
@@ -25,27 +24,26 @@ export default function BackgroundEffects() {
 
     animate(x, targetX, {
       duration,
-      ease: "easeInOut",
-      onComplete: () => animateCircle(x, y, size, index)
+      ease: 'easeInOut',
+      onComplete: () => animateCircle(x, y, size, index),
     });
-    
-    animate(y, targetY, { 
-      duration, 
-      ease: "easeInOut" 
+
+    animate(y, targetY, {
+      duration,
+      ease: 'easeInOut',
     });
 
     animate(size, 400 + Math.random() * 100, {
       duration: 15,
-      ease: "easeInOut",
+      ease: 'easeInOut',
       repeat: Infinity,
-      repeatType: "reverse"
+      repeatType: 'reverse',
     });
   };
 
   useEffect(() => {
     setIsMounted(true);
-    
-    // Generate stars only on client
+
     const generatedStars = Array.from({ length: 150 }, (_, i) => ({
       id: i,
       width: Math.random() * 4,
@@ -53,11 +51,10 @@ export default function BackgroundEffects() {
       left: Math.random() * 100,
       top: Math.random() * 100,
       opacity: Math.random() * 0.8 + 0.2,
-      color: i % 5 === 0 ? 'bg-pink-300' : 'bg-white'
+      color: i % 5 === 0 ? 'bg-pink-300' : 'bg-white',
     }));
     setStars(generatedStars);
 
-    // Initialize circle positions
     bigX.set(window.innerWidth * 0.2);
     bigY.set(window.innerHeight / 2);
     medium1X.set(window.innerWidth * 0.7);
@@ -66,16 +63,16 @@ export default function BackgroundEffects() {
     medium2Y.set(window.innerHeight * 0.7);
 
     animateCircle(bigX, bigY, bigSize, 0);
-    animateCircle(medium1X, medium1Y, medium1Size, 1);
+    // animateCircle(medium1X, medium1Y, medium1Size, 1);
     animateCircle(medium2X, medium2Y, medium2Size, 2);
 
     const handleResize = () => {
-      [bigX, medium1X, medium2X].forEach(x => {
+      [bigX, medium1X, medium2X].forEach((x) => {
         if (x.get() > window.innerWidth - bigSize.get()) {
           x.set(window.innerWidth - bigSize.get());
         }
       });
-      [bigY, medium1Y, medium2Y].forEach(y => {
+      [bigY, medium1Y, medium2Y].forEach((y) => {
         if (y.get() > window.innerHeight - bigSize.get()) {
           y.set(window.innerHeight - bigSize.get());
         }
@@ -86,19 +83,35 @@ export default function BackgroundEffects() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Don't render anything during SSR
   if (!isMounted) {
     return (
-      <div className="fixed inset-0 -z-50 overflow-hidden pointer-events-none" aria-hidden="true">
+      <div
+        className="fixed inset-0 -z-50 overflow-hidden pointer-events-none"
+        aria-hidden="true"
+      >
+        {/* fallback background image */}
         <div className="absolute inset-0 bg-[url('/images/space-bg.jpg')] bg-cover bg-center opacity-20" />
       </div>
     );
   }
 
   return (
-    <div className="fixed inset-0 -z-50 overflow-hidden pointer-events-none" aria-hidden="true">
-      <div className="absolute inset-0 bg-[url('/images/space-bg.jpg')] bg-cover bg-center opacity-20" />
-      
+    <div
+      className="fixed inset-0 -z-50 overflow-hidden pointer-events-none"
+      aria-hidden="true"
+    >
+      {/* 🔹 Background Video */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover "
+      >
+        <source src="/video/bg.mp4" type="video/mp4" />
+      </video>
+
+      {/* Glow Circles */}
       <div className="absolute inset-0 mix-blend-screen">
         <motion.div
           className="absolute rounded-full"
@@ -111,7 +124,7 @@ export default function BackgroundEffects() {
             filter: 'blur(120px)',
           }}
         />
-        <motion.div
+        {/* <motion.div
           className="absolute rounded-full"
           style={{
             backgroundColor: 'rgba(236, 72, 153, 0.6)',
@@ -121,7 +134,7 @@ export default function BackgroundEffects() {
             y: medium1Y,
             filter: 'blur(100px)',
           }}
-        />
+        /> */}
         <motion.div
           className="absolute rounded-full"
           style={{
@@ -135,6 +148,7 @@ export default function BackgroundEffects() {
         />
       </div>
 
+      {/* Stars */}
       {stars.map((star) => (
         <div
           key={`star-${star.id}`}
